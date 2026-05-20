@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import './styles.css';
 
 const BASE = '/Dog-Hotel-By-Woofland/';
+const BRAND_NAME = 'Dog Hotel by Woofland';
 
 const contact = {
   address: '137 Wairau Road, Wairau Valley, Auckland 0627',
@@ -21,15 +22,15 @@ function routeLink(route) {
 function Header() {
   return (
     <header className="site-header">
-      <a className="brand" href={homeLink()}>
-        <span className="brand-main">Woofland</span>
-        <span className="brand-sub">Dog Hotel</span>
+      <a className="brand" href={homeLink()} aria-label={BRAND_NAME}>
+        <span className="brand-main">Dog Hotel</span>
+        <span className="brand-sub">by Woofland</span>
       </a>
       <nav>
         <a href={homeLink('#rooms')}>Rooms</a>
         <a href={homeLink('#care')}>Care</a>
         <a href={homeLink('#faq')}>FAQ</a>
-        <a className="button dark" href="mailto:info@woofland.co.nz?subject=Dog Hotel Booking Enquiry">Check Availability</a>
+        <a className="button dark" href="mailto:info@woofland.co.nz?subject=Dog Hotel by Woofland Enquiry">Check Availability</a>
       </nav>
     </header>
   );
@@ -40,7 +41,7 @@ function Footer() {
     <footer className="footer">
       <div className="footer-grid">
         <div>
-          <h3>Woofland Dog Hotel</h3>
+          <h3>{BRAND_NAME}</h3>
           <p>DogHotel.co.nz is operated by Woofland in Wairau Valley, Auckland.</p>
         </div>
         <div>
@@ -57,7 +58,7 @@ function Footer() {
       </div>
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} Woofland. All rights reserved.</span>
-        <span>Premium dog hotel care, backed by Woofland.</span>
+        <span>{BRAND_NAME}. Premium overnight dog care in Auckland.</span>
       </div>
     </footer>
   );
@@ -92,13 +93,13 @@ function HomePage() {
         <section className="hero">
           <div className="hero-content">
             <p className="eyebrow">Premium overnight dog care in Auckland</p>
-            <h1>Dog Hotel by Woofland</h1>
+            <h1>{BRAND_NAME}</h1>
             <p className="lead">A warmer, more comfortable overnight stay for dogs, with private Paw Pods, a home-like Pack Lounge, spacious Alpha Suites, calm routines, soft bedding, and supervised care.</p>
             <div className="actions">
-              <a className="button gold" href="mailto:info@woofland.co.nz?subject=Dog Hotel Booking Enquiry">Check Availability</a>
+              <a className="button gold" href="mailto:info@woofland.co.nz?subject=Dog Hotel by Woofland Enquiry">Check Availability</a>
               <a className="button light" href="#rooms">View Stay Options</a>
             </div>
-            <p className="note">Operated by Woofland in Wairau Valley, Auckland. Suitable for holidays, business trips, weekend stays, emergency stays, and longer bookings, depending on availability and suitability.</p>
+            <p className="note">{BRAND_NAME} is operated by Woofland in Wairau Valley, Auckland. Suitable for holidays, business trips, weekend stays, emergency stays, and longer bookings, depending on availability and suitability.</p>
           </div>
           <div className="hero-card">
             <p className="eyebrow gold-text">Hotel stay options</p>
@@ -126,7 +127,7 @@ function HomePage() {
         <section id="rooms" className="section">
           <p className="eyebrow">Choose the right room</p>
           <h2>Paw Pod, Pack Lounge, or Alpha Suite</h2>
-          <p className="section-lead left">Different dogs settle in different ways. Woofland offers private, social, and suite-style options so the stay can match your dog’s personality and needs.</p>
+          <p className="section-lead left">Different dogs settle in different ways. {BRAND_NAME} offers private, social, and suite-style options so the stay can match your dog’s personality and needs.</p>
           <div className="room-grid">
             {rooms.map((room) => <RoomCard room={room} key={room.title} />)}
           </div>
@@ -151,21 +152,21 @@ function HomePage() {
 
         <section id="faq" className="section center">
           <p className="eyebrow">Questions</p>
-          <h2>Dog Hotel Auckland FAQs</h2>
+          <h2>{BRAND_NAME} FAQs</h2>
           <div className="faq-list">
-            <Faq q="Does Woofland offer dog hotel care in Auckland?" a="Yes. Dog Hotel by Woofland offers overnight dog hotel-style care in Auckland for owners who want a warm, structured, and comfort-focused stay for their dogs." />
+            <Faq q="Does Dog Hotel by Woofland offer dog hotel care in Auckland?" a="Yes. Dog Hotel by Woofland offers overnight dog hotel-style care in Auckland for owners who want a warm, structured, and comfort-focused stay for their dogs." />
             <Faq q="Is dog hotel care the same as dog boarding?" a="They are similar because both include overnight accommodation. Dog hotel care usually describes a more comfort-focused and personal style of overnight stay, with stronger attention to routine, rest, bedding, supervision, and environment." />
             <Faq q="Which option is best for my dog?" a="It depends on your dog’s personality, routine, social comfort, and booking needs. Paw Pods suit dogs who prefer privacy, Pack Lounge suits suitable social dogs, and Alpha Suites suit dogs who need more room or families with multiple dogs." />
             <Faq q="Can my dog attend daycare and stay overnight?" a="Yes, depending on suitability, booking type, availability, and your dog’s comfort. Daytime activity and overnight rest can work together for many dogs." />
-            <Faq q="Does Woofland offer transport for dog hotel bookings?" a="Selected pick-up and drop-off may be available for eligible bookings, depending on location, route, schedule, and availability." />
+            <Faq q="Does Dog Hotel by Woofland offer transport for bookings?" a="Selected pick-up and drop-off may be available for eligible bookings, depending on location, route, schedule, and availability." />
           </div>
         </section>
 
         <section className="cta">
           <p className="eyebrow gold-text">Need dog hotel care in Auckland?</p>
-          <h2>Contact Woofland to find the right overnight care option.</h2>
+          <h2>Contact Dog Hotel by Woofland to find the right overnight care option.</h2>
           <p>We will help you choose between Paw Pod, Pack Lounge, and Alpha Suite based on your dog’s routine, comfort, and suitability.</p>
-          <a className="button gold" href="mailto:info@woofland.co.nz?subject=Dog Hotel Booking Enquiry">Check Availability</a>
+          <a className="button gold" href="mailto:info@woofland.co.nz?subject=Dog Hotel by Woofland Enquiry">Check Availability</a>
         </section>
       </main>
       <Footer />
@@ -198,13 +199,13 @@ function LegalPage({ type }) {
     <>
       <Header />
       <main className="legal-page">
-        <p className="eyebrow">Woofland legal</p>
+        <p className="eyebrow">{BRAND_NAME} legal</p>
         <h1>{isTerms ? 'Terms & Conditions' : 'Privacy Policy'}</h1>
-        <p className="lead">This page is for Dog Hotel by Woofland and should use the same legal content as Woofland.</p>
+        <p className="lead">This page is for {BRAND_NAME} and should use the same legal content as Woofland.</p>
         <div className="legal-box">
-          <h2>{isTerms ? 'Woofland Terms & Conditions' : 'Woofland Privacy Policy'}</h2>
+          <h2>{isTerms ? 'Terms & Conditions' : 'Privacy Policy'}</h2>
           <p>The full legal wording should be copied from Woofland’s current {isTerms ? 'Terms & Conditions' : 'Privacy Policy'} page so the policy remains exactly the same across both websites.</p>
-          <p>Until the final wording is added, please contact Woofland for the current policy details.</p>
+          <p>Until the final wording is added, please contact {BRAND_NAME} for the current policy details.</p>
           <p><strong>Contact:</strong> {contact.email} | {contact.phone}</p>
         </div>
       </main>
