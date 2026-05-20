@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
+
+const BASE = '/Dog-Hotel-By-Woofland/';
 
 const contact = {
   address: '137 Wairau Road, Wairau Valley, Auckland 0627',
@@ -8,17 +10,25 @@ const contact = {
   email: 'info@woofland.co.nz',
 };
 
+function homeLink(hash = '') {
+  return `${BASE}${hash}`;
+}
+
+function routeLink(route) {
+  return `${BASE}#/${route}`;
+}
+
 function Header() {
   return (
     <header className="site-header">
-      <a className="brand" href="/">
+      <a className="brand" href={homeLink()}>
         <span className="brand-main">Woofland</span>
         <span className="brand-sub">Dog Hotel</span>
       </a>
       <nav>
-        <a href="/#rooms">Rooms</a>
-        <a href="/#care">Care</a>
-        <a href="/#faq">FAQ</a>
+        <a href={homeLink('#rooms')}>Rooms</a>
+        <a href={homeLink('#care')}>Care</a>
+        <a href={homeLink('#faq')}>FAQ</a>
         <a className="button dark" href="mailto:info@woofland.co.nz?subject=Dog Hotel Booking Enquiry">Check Availability</a>
       </nav>
     </header>
@@ -41,8 +51,8 @@ function Footer() {
         </div>
         <div>
           <h4>Legal</h4>
-          <a href="/terms-and-conditions">Terms & Conditions</a>
-          <a href="/privacy-policy">Privacy Policy</a>
+          <a href={routeLink('terms-and-conditions')}>Terms & Conditions</a>
+          <a href={routeLink('privacy-policy')}>Privacy Policy</a>
         </div>
       </div>
       <div className="footer-bottom">
@@ -203,10 +213,24 @@ function LegalPage({ type }) {
   );
 }
 
+function getRoute() {
+  const hash = window.location.hash || '';
+  if (hash === '#/terms-and-conditions') return 'terms';
+  if (hash === '#/privacy-policy') return 'privacy';
+  return 'home';
+}
+
 function App() {
-  const path = window.location.pathname;
-  if (path === '/terms-and-conditions') return <LegalPage type="terms" />;
-  if (path === '/privacy-policy') return <LegalPage type="privacy" />;
+  const [route, setRoute] = useState(getRoute());
+
+  useEffect(() => {
+    const onHashChange = () => setRoute(getRoute());
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
+
+  if (route === 'terms') return <LegalPage type="terms" />;
+  if (route === 'privacy') return <LegalPage type="privacy" />;
   return <HomePage />;
 }
 
