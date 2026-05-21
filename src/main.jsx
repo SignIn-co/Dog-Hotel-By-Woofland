@@ -85,6 +85,32 @@ const rooms = [
   },
 ];
 
+function NeonDogMark() {
+  return (
+    <div className="brand-mark" aria-hidden="true">
+      <div className="small-arch">
+        <div className="woofland-dog-mini">
+          <span className="mini-tail" />
+          <span className="mini-body" />
+          <span className="mini-head" />
+          <span className="mini-leg front" />
+          <span className="mini-leg back" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function HeroVisual() {
+  return (
+    <div className="hero-visual" aria-label="Mysterious illuminated dog hotel pod with a dog silhouette">
+      <div className="pod-glow">
+        <div className="dog-shadow" />
+      </div>
+    </div>
+  );
+}
+
 function HomePage() {
   return (
     <>
@@ -92,8 +118,10 @@ function HomePage() {
       <main>
         <section className="hero">
           <div className="hero-content">
+            <NeonDogMark />
             <p className="eyebrow">Premium overnight dog care in Auckland</p>
             <h1>{BRAND_NAME}</h1>
+            <p className="tagline">Stay. Rest. Feel at Home.</p>
             <p className="lead">A warmer, more comfortable overnight stay for dogs, with private Paw Pods, a home-like Pack Lounge, spacious Alpha Suites, calm routines, soft bedding, and supervised care.</p>
             <div className="actions">
               <a className="button gold" href="mailto:info@woofland.co.nz?subject=Dog Hotel by Woofland Enquiry">Check Availability</a>
@@ -101,20 +129,11 @@ function HomePage() {
             </div>
             <p className="note">{BRAND_NAME} is operated by Woofland in Wairau Valley, Auckland. Suitable for holidays, business trips, weekend stays, emergency stays, and longer bookings, depending on availability and suitability.</p>
           </div>
-          <div className="hero-card">
-            <p className="eyebrow gold-text">Hotel stay options</p>
-            <h2>Three ways to stay</h2>
-            {rooms.map((room) => (
-              <div className="mini-card" key={room.title}>
-                <strong>{room.title}</strong>
-                <span>{room.label}</span>
-              </div>
-            ))}
-          </div>
+          <HeroVisual />
         </section>
 
-        <section id="care" className="section white center">
-          <p className="eyebrow">A better overnight stay</p>
+        <section id="care" className="section center intro-section">
+          <p className="eyebrow">Your dog’s holiday destination</p>
           <h2>Comfort, routine, and supervision</h2>
           <p className="section-lead">Dogs need more than a place to sleep. They need a calm environment, familiar routines, soft rest spaces, and people who understand how to help them settle while they are away from home.</p>
           <div className="three-grid">
@@ -124,7 +143,7 @@ function HomePage() {
           </div>
         </section>
 
-        <section id="rooms" className="section">
+        <section id="rooms" className="section room-section">
           <p className="eyebrow">Choose the right room</p>
           <h2>Paw Pod, Pack Lounge, or Alpha Suite</h2>
           <p className="section-lead left">Different dogs settle in different ways. {BRAND_NAME} offers private, social, and suite-style options so the stay can match your dog’s personality and needs.</p>
@@ -150,7 +169,7 @@ function HomePage() {
           </div>
         </section>
 
-        <section id="faq" className="section center">
+        <section id="faq" className="section center faq-section">
           <p className="eyebrow">Questions</p>
           <h2>{BRAND_NAME} FAQs</h2>
           <div className="faq-list">
@@ -163,7 +182,7 @@ function HomePage() {
         </section>
 
         <section className="cta">
-          <p className="eyebrow gold-text">Need dog hotel care in Auckland?</p>
+          <p className="eyebrow gold-text">Where dogs go on holiday</p>
           <h2>Contact Dog Hotel by Woofland to find the right overnight care option.</h2>
           <p>We will help you choose between Paw Pod, Pack Lounge, and Alpha Suite based on your dog’s routine, comfort, and suitability.</p>
           <a className="button gold" href="mailto:info@woofland.co.nz?subject=Dog Hotel by Woofland Enquiry">Check Availability</a>
