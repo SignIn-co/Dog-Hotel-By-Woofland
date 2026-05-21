@@ -4,6 +4,7 @@ import './styles.css';
 
 const BASE = '/Dog-Hotel-By-Woofland/';
 const BRAND_NAME = 'Dog Hotel by Woofland';
+const HERO_IMAGE = `${BASE}images/dog-hotel-hero.png`;
 
 const contact = {
   address: '137 Wairau Road, Wairau Valley, Auckland 0627',
@@ -85,28 +86,10 @@ const rooms = [
   },
 ];
 
-function NeonDogMark() {
-  return (
-    <div className="brand-mark" aria-hidden="true">
-      <div className="small-arch">
-        <div className="woofland-dog-mini">
-          <span className="mini-tail" />
-          <span className="mini-body" />
-          <span className="mini-head" />
-          <span className="mini-leg front" />
-          <span className="mini-leg back" />
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function HeroVisual() {
   return (
-    <div className="hero-visual" aria-label="Mysterious illuminated dog hotel pod with a dog silhouette">
-      <div className="pod-glow">
-        <div className="dog-shadow" />
-      </div>
+    <div className="hero-visual">
+      <img className="hero-image" src={HERO_IMAGE} alt="Dog Hotel by Woofland luxury glowing doorway with a mysterious dog silhouette" />
     </div>
   );
 }
@@ -118,7 +101,6 @@ function HomePage() {
       <main>
         <section className="hero">
           <div className="hero-content">
-            <NeonDogMark />
             <p className="eyebrow">Premium overnight dog care in Auckland</p>
             <h1>{BRAND_NAME}</h1>
             <p className="tagline">Stay. Rest. Feel at Home.</p>
