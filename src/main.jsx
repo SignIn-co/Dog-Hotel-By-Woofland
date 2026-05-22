@@ -37,29 +37,30 @@ function Header() {
 
 function HeroVisual() {
   return (
-    <div className="hero-visual portal-visual" aria-label="Glowing arched gate frame without dog">
-      <svg className="portal-svg" viewBox="0 0 430 720" aria-hidden="true">
+    <div className="hero-visual portal-visual" aria-label="Glowing rounded gate frame without dog">
+      <svg className="portal-svg" viewBox="0 0 430 760" aria-hidden="true">
         <defs>
-          <filter id="portalGlow" x="-80%" y="-50%" width="260%" height="220%">
-            <feGaussianBlur stdDeviation="4" result="soft" />
-            <feColorMatrix in="soft" type="matrix" values="1 0 0 0 1  0 0.55 0 0 0.42  0 0 0.08 0 0  0 0 0 0.95 0" result="gold" />
+          <filter id="portalGlow" x="-90%" y="-70%" width="280%" height="260%">
+            <feGaussianBlur stdDeviation="3.2" result="soft" />
+            <feColorMatrix in="soft" type="matrix" values="1 0 0 0 1  0 0.55 0 0 0.42  0 0 0.05 0 0  0 0 0 0.92 0" result="gold" />
             <feMerge>
               <feMergeNode in="gold" />
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
-          <filter id="outerAmber" x="-90%" y="-65%" width="280%" height="250%">
-            <feGaussianBlur stdDeviation="22" />
+          <filter id="outerAmber" x="-100%" y="-80%" width="300%" height="280%">
+            <feGaussianBlur stdDeviation="24" />
           </filter>
           <linearGradient id="lineGold" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#fff4bc" />
-            <stop offset="14%" stopColor="#ffbd31" />
-            <stop offset="76%" stopColor="#ff9f12" />
-            <stop offset="100%" stopColor="#ffca4a" />
+            <stop offset="0%" stopColor="#fff6bd" />
+            <stop offset="10%" stopColor="#ffcf58" />
+            <stop offset="50%" stopColor="#ff9f12" />
+            <stop offset="90%" stopColor="#ff9b0d" />
+            <stop offset="100%" stopColor="#ffd05a" />
           </linearGradient>
         </defs>
-        <path className="portal-outer" d="M85 650 L85 210 C85 93 142 38 215 38 C288 38 345 93 345 210 L345 650" />
-        <path className="portal-line" d="M85 650 L85 210 C85 93 142 38 215 38 C288 38 345 93 345 210 L345 650" />
+        <path className="portal-outer" d="M86 628 L86 215 C86 110 141 53 215 53 C289 53 344 110 344 215 L344 628 C344 684 300 721 215 721 C130 721 86 684 86 628 Z" />
+        <path className="portal-line" d="M86 628 L86 215 C86 110 141 53 215 53 C289 53 344 110 344 215 L344 628 C344 684 300 721 215 721 C130 721 86 684 86 628 Z" />
       </svg>
       <div className="portal-floor" />
     </div>
