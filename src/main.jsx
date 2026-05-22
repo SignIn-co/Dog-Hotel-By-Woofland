@@ -35,44 +35,33 @@ function Header() {
   );
 }
 
-function SittingDog() {
-  return (
-    <svg className="dog-svg" viewBox="0 0 420 620" aria-hidden="true">
-      <defs>
-        <filter id="softRim" x="-30%" y="-30%" width="160%" height="160%">
-          <feDropShadow dx="0" dy="0" stdDeviation="2.5" floodColor="#d58616" floodOpacity="0.34" />
-        </filter>
-      </defs>
-      <g filter="url(#softRim)">
-        <path className="dog-fill" d="M221 535c-51 0-88-27-104-76-11-35-10-83 3-128 11-39 29-72 48-95 7-8 7-18 0-25-16-16-26-35-29-57-4-30 8-58 35-78 22-17 49-23 80-18 21 4 38 11 51 23 13 11 27 26 40 45 10 15 19 31 28 49 18 37 28 82 28 126 0 44-9 84-27 120-18 35-43 62-75 82-24 15-50 23-78 32z" />
-        <path className="dog-fill" d="M154 158c-8-34 4-65 33-85 22-16 50-23 82-18 34 6 64 25 88 57 14 18 21 34 22 48 1 11-4 20-15 26-16 9-35 9-59 2-21-6-41-15-62-27-20-11-36-15-48-11-14 4-28 7-41 8z" />
-        <path className="dog-fill" d="M151 130c-28-8-55-3-80 16-17 13-29 27-36 41-5 12-2 20 10 24 20 6 47 0 80-18 21-11 36-25 46-43 4-8-3-16-20-20z" />
-        <path className="dog-fill" d="M315 151c14-31 39-46 74-45 18 1 31 7 38 18 7 11 6 23-4 36-16 20-39 33-71 40-26 6-43-2-37-49z" />
-        <path className="dog-fill" d="M96 440c-23 26-36 56-38 89-2 27 8 45 30 54 15 6 32 5 49-2 11-5 12-15 2-28-10-13-14-32-11-57 3-26 8-51 16-76 7-22 2-29-15-21-11 5-22 19-33 41z" />
-        <path className="dog-fill" d="M290 476c3 35 10 62 21 81 10 17 25 27 45 31 16 2 30 0 42-8 10-7 9-16-3-26-13-11-21-27-24-49-3-24-4-49-4-75 0-22-8-32-25-30-28 4-45 29-52 76z" />
-        <path className="dog-fill" d="M145 536c32 10 69 12 112 6 7-1 10 3 9 10-4 18-16 32-36 40-22 9-50 10-85 1-16-4-25-12-26-23-2-17 7-28 26-34z" />
-        <path className="rim" d="M104 192c34-9 69-28 105-57 34 26 70 46 108 60" />
-        <path className="rim" d="M174 77c35-28 87-30 130-3" />
-        <path className="rim" d="M257 55c32 7 59 27 82 59" />
-        <path className="rim" d="M349 120c21-8 44-10 68-6" />
-        <path className="rim thin" d="M324 150c20 22 48 25 85 10" />
-        <path className="rim thin" d="M189 242c45 20 89 20 133 0" />
-        <path className="rim thin" d="M117 356c38 13 79 17 123 12" />
-      </g>
-    </svg>
-  );
-}
-
 function HeroVisual() {
   return (
-    <div className="hero-visual" aria-label="Glowing dog hotel doorway with a dark sitting dog silhouette">
-      <div className="gate-halo" />
-      <div className="gate">
-        <div className="gate-inner">
-          <SittingDog />
-        </div>
-      </div>
-      <div className="floor-light" />
+    <div className="hero-visual portal-visual" aria-label="Glowing arched gate frame without dog">
+      <svg className="portal-svg" viewBox="0 0 430 720" aria-hidden="true">
+        <defs>
+          <filter id="portalGlow" x="-80%" y="-50%" width="260%" height="220%">
+            <feGaussianBlur stdDeviation="4" result="soft" />
+            <feColorMatrix in="soft" type="matrix" values="1 0 0 0 1  0 0.55 0 0 0.42  0 0 0.08 0 0  0 0 0 0.95 0" result="gold" />
+            <feMerge>
+              <feMergeNode in="gold" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          <filter id="outerAmber" x="-90%" y="-65%" width="280%" height="250%">
+            <feGaussianBlur stdDeviation="22" />
+          </filter>
+          <linearGradient id="lineGold" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#fff4bc" />
+            <stop offset="14%" stopColor="#ffbd31" />
+            <stop offset="76%" stopColor="#ff9f12" />
+            <stop offset="100%" stopColor="#ffca4a" />
+          </linearGradient>
+        </defs>
+        <path className="portal-outer" d="M85 650 L85 210 C85 93 142 38 215 38 C288 38 345 93 345 210 L345 650" />
+        <path className="portal-line" d="M85 650 L85 210 C85 93 142 38 215 38 C288 38 345 93 345 210 L345 650" />
+      </svg>
+      <div className="portal-floor" />
     </div>
   );
 }
