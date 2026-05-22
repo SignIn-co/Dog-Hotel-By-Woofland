@@ -36,31 +36,40 @@ function Header() {
 }
 
 function HeroVisual() {
+  const portalPath = 'M92 655 L92 244 C92 113 145 50 215 50 C285 50 338 113 338 244 L338 655 C338 694 323 719 294 733 C271 744 243 748 215 748 C187 748 159 744 136 733 C107 719 92 694 92 655 Z';
+
   return (
-    <div className="hero-visual portal-visual" aria-label="Glowing rounded gate frame without dog">
-      <svg className="portal-svg" viewBox="0 0 430 760" aria-hidden="true">
+    <div className="hero-visual portal-visual" aria-label="Luxury glowing rounded gate frame without dog">
+      <svg className="portal-svg" viewBox="0 0 430 790" aria-hidden="true">
         <defs>
-          <filter id="portalGlow" x="-90%" y="-70%" width="280%" height="260%">
-            <feGaussianBlur stdDeviation="3.2" result="soft" />
-            <feColorMatrix in="soft" type="matrix" values="1 0 0 0 1  0 0.55 0 0 0.42  0 0 0.05 0 0  0 0 0 0.92 0" result="gold" />
+          <filter id="portalBigGlow" x="-120%" y="-90%" width="340%" height="300%">
+            <feGaussianBlur stdDeviation="24" />
+          </filter>
+          <filter id="portalLineGlow" x="-80%" y="-60%" width="260%" height="230%">
+            <feGaussianBlur stdDeviation="3.4" result="blur" />
+            <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1  0 0.55 0 0 0.43  0 0 0.05 0 0  0 0 0 0.92 0" result="gold" />
             <feMerge>
               <feMergeNode in="gold" />
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
-          <filter id="outerAmber" x="-100%" y="-80%" width="300%" height="280%">
-            <feGaussianBlur stdDeviation="24" />
-          </filter>
-          <linearGradient id="lineGold" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#fff6bd" />
-            <stop offset="10%" stopColor="#ffcf58" />
-            <stop offset="50%" stopColor="#ff9f12" />
-            <stop offset="90%" stopColor="#ff9b0d" />
-            <stop offset="100%" stopColor="#ffd05a" />
+          <linearGradient id="portalStroke" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#fff7cf" />
+            <stop offset="0.13" stopColor="#ffc038" />
+            <stop offset="0.55" stopColor="#ff9608" />
+            <stop offset="0.86" stopColor="#ff9f0d" />
+            <stop offset="1" stopColor="#ffd15a" />
           </linearGradient>
+          <radialGradient id="portalInner" cx="50%" cy="11%" r="85%">
+            <stop offset="0" stopColor="#2d1602" stopOpacity="0.58" />
+            <stop offset="0.42" stopColor="#070301" stopOpacity="0.96" />
+            <stop offset="1" stopColor="#000000" stopOpacity="1" />
+          </radialGradient>
         </defs>
-        <path className="portal-outer" d="M86 628 L86 215 C86 110 141 53 215 53 C289 53 344 110 344 215 L344 628 C344 684 300 721 215 721 C130 721 86 684 86 628 Z" />
-        <path className="portal-line" d="M86 628 L86 215 C86 110 141 53 215 53 C289 53 344 110 344 215 L344 628 C344 684 300 721 215 721 C130 721 86 684 86 628 Z" />
+        <path className="portal-glow-wide" d={portalPath} />
+        <path className="portal-fill" d={portalPath} />
+        <path className="portal-glow-line" d={portalPath} />
+        <path className="portal-line" d={portalPath} />
       </svg>
       <div className="portal-floor" />
     </div>
