@@ -35,43 +35,49 @@ function Header() {
   );
 }
 
-function HeroVisual() {
-  const portalPath = 'M92 655 L92 244 C92 113 145 50 215 50 C285 50 338 113 338 244 L338 655 C338 694 323 719 294 733 C271 744 243 748 215 748 C187 748 159 744 136 733 C107 719 92 694 92 655 Z';
-
+function MiniLogoMark() {
   return (
-    <div className="hero-visual portal-visual" aria-label="Luxury glowing rounded gate frame without dog">
-      <svg className="portal-svg" viewBox="0 0 430 790" aria-hidden="true">
-        <defs>
-          <filter id="portalBigGlow" x="-120%" y="-90%" width="340%" height="300%">
-            <feGaussianBlur stdDeviation="24" />
-          </filter>
-          <filter id="portalLineGlow" x="-80%" y="-60%" width="260%" height="230%">
-            <feGaussianBlur stdDeviation="3.4" result="blur" />
-            <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1  0 0.55 0 0 0.43  0 0 0.05 0 0  0 0 0 0.92 0" result="gold" />
-            <feMerge>
-              <feMergeNode in="gold" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-          <linearGradient id="portalStroke" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#fff7cf" />
-            <stop offset="0.13" stopColor="#ffc038" />
-            <stop offset="0.55" stopColor="#ff9608" />
-            <stop offset="0.86" stopColor="#ff9f0d" />
-            <stop offset="1" stopColor="#ffd15a" />
-          </linearGradient>
-          <radialGradient id="portalInner" cx="50%" cy="11%" r="85%">
-            <stop offset="0" stopColor="#2d1602" stopOpacity="0.58" />
-            <stop offset="0.42" stopColor="#070301" stopOpacity="0.96" />
-            <stop offset="1" stopColor="#000000" stopOpacity="1" />
-          </radialGradient>
-        </defs>
-        <path className="portal-glow-wide" d={portalPath} />
-        <path className="portal-fill" d={portalPath} />
-        <path className="portal-glow-line" d={portalPath} />
-        <path className="portal-line" d={portalPath} />
-      </svg>
-      <div className="portal-floor" />
+    <svg className="mini-logo-mark" viewBox="0 0 140 150" role="img" aria-label="Woofland dog inside hotel arch">
+      <path className="mini-arch" d="M30 126V58C30 25 47 12 70 12s40 13 40 46v68" />
+      <g className="mini-dog">
+        <path className="mini-tail" d="M36 76C20 67 19 49 29 39" />
+        <path className="mini-body" d="M39 104V70c0-13 10-24 26-24h26c14 0 27 11 27 28v30h-17V83c0-4-2-7-6-7H63c-5 0-8 3-8 8v20H39Z" />
+        <path className="mini-chest" d="M95 47c20 3 28 14 26 25-2 10-12 16-27 15H64c-8 0-12-4-12-10 0-12 16-31 43-30Z" />
+        <path className="mini-head" d="M74 44c7-15 22-26 39-20 16 6 21 22 15 34-6 12-21 17-37 12-13-4-22-14-17-26Z" />
+        <path className="mini-ear" d="M105 24c15 1 24 10 27 20-14 1-26-5-33-15 2-2 4-4 6-5Z" />
+        <path className="mini-shadow" d="M65 75c22 4 42 0 56-9-3 9-12 17-28 20H63c-7 0-11-3-11-9 4-2 8-3 13-2Z" />
+        <path className="mini-leg" d="M53 103h18V78H55c-2 7-3 15-2 25Z" />
+        <path className="mini-leg dark" d="M95 103h18V78H98c-2 8-3 16-3 25Z" />
+      </g>
+    </svg>
+  );
+}
+
+function DogSilhouette() {
+  return (
+    <svg className="dog-svg" viewBox="0 0 300 520" aria-hidden="true">
+      <path className="dog-fill" d="M143 505c-18-40-16-93-12-140 3-32 5-64-5-91-9-26-29-45-45-66-18-24-28-50-18-78 11-31 42-50 76-55 30-5 59 3 83 22 28 22 46 58 43 91-3 33-25 55-53 68 33 32 50 76 50 130v119H143Z" />
+      <path className="dog-fill" d="M88 159c-29 4-55-2-72-14 17-17 50-28 82-22 13 2 18 33-10 36Z" />
+      <path className="rim" d="M85 146c30-24 81-30 121 2" />
+      <path className="rim" d="M207 96c39 25 58 75 39 118" />
+      <path className="rim" d="M138 166c-23 24-26 66-12 101" />
+      <path className="rim thin" d="M169 90c-20 15-24 43-10 66" />
+      <path className="rim thin" d="M212 255c30 37 43 87 40 147" />
+      <path className="rim thin" d="M134 326c4 60 1 120 19 177" />
+    </svg>
+  );
+}
+
+function HeroVisual() {
+  return (
+    <div className="hero-visual gate-visual" aria-label="Mysterious luxury dog pod with glowing mango doorway and dog silhouette">
+      <div className="gate-halo" />
+      <div className="gate">
+        <div className="gate-inner">
+          <DogSilhouette />
+        </div>
+      </div>
+      <div className="floor-light" />
     </div>
   );
 }
@@ -89,9 +95,12 @@ function HomePage() {
       <main>
         <section className="hero">
           <div className="hero-copy">
+            <MiniLogoMark />
             <p className="eyebrow">Premium overnight dog care in Auckland</p>
-            <h1>{BRAND_NAME}</h1>
-            <p className="tagline">Stay. Rest. Feel at Home.</p>
+            <h1>Dog Hotel</h1>
+            <p className="byline">by Woofland</p>
+            <span className="hero-rule" />
+            <p className="tagline">Dogs deserve holidays.</p>
             <p className="lead">A calm, comfort-focused overnight stay for dogs, with private Paw Pods, a home-like Pack Lounge, spacious Alpha Suites, soft bedding, and supervised care.</p>
             <div className="actions">
               <a className="button gold" href={`mailto:${contact.email}?subject=Dog Hotel by Woofland Enquiry`}>Check Availability</a>
