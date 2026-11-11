@@ -13,11 +13,10 @@
 <link rel="icon" type="image/webp" href="/img/logo.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Space+Grotesk:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
-<div class="cur" id="cur"><span>View</span></div>
 <header class="nav" id="nav">
   <a class="brand" href="/" aria-label="Woofland home"><img src="/img/logo.webp" alt="" width="48" height="38"><span>Woofland</span></a>
   <nav class="navpill" aria-label="Main"><span class="blob"></span><a href="/dog-daycare">Dog Daycare</a><a href="/dog-hotel">Dog Hotel</a><a href="/farm-adventure">Farm Adventure</a><a href="/about">Our Story</a><a href="#contact">Contact</a></nav>
@@ -40,24 +39,24 @@
   <div class="dg" id="rdog"><img data-p="run" src="/img/d3.webp" alt=""><img data-p="walk" src="/img/d8.webp" alt=""><img data-p="sit" class="on" src="/img/d1.webp" alt=""><img data-p="sleep" src="/img/d6.webp" alt=""></div></div>
 <main>
 <div class="loader" id="loader"><div class="in2"><img src="/img/logo.webp" alt=""><b id="lcount">0</b><div class="lbar"><i id="lbar"></i></div></div></div>
-<section class="hero" id="hero" aria-label="Woofland" data-src="/media/ig4,/media/ig14,/media/ig1" data-fy="0.3,0.62,0.5">
+<section class="hero" id="hero" aria-label="Woofland" data-src="/img/hero1.webp,/img/space.webp,/img/hero3.webp" data-fy="0.5,0.5,0.5">
   <div class="hstage">
     <div class="hframe" id="hframe"><div class="hfall" id="hfall"></div><canvas id="gl" aria-hidden="true"></canvas><div class="hshade"></div></div>
     <div class="hslide" data-s="0"><div class="wrap">
-      <div class="eyebrow" data-fade>Dog Daycare &amp; Hotel &middot; North Shore, Auckland</div>
+      <div class="eyebrow" data-fade>Premium Dog Daycare and Hotel &middot; North Shore, Auckland</div>
       <h1 class="display"><span class="ln"><span>Where dogs</span></span><span class="ln"><span>are <span class="it">dogs.</span></span></span></h1>
-      <p class="lead" data-fade data-d="1">A purpose-built home away from home. Spacious, supervised and cage-free, with people who are present day and night.</p>
-      <div class="row" data-fade data-d="2"><a class="btn mag " href="https://www.woofland.co.nz/booking-pricing">Book Free Trial <i></i></a><a class="btn line mag" href="/dog-hotel">Discover the Hotel <i></i></a></div>
+      <p class="lead" data-fade data-d="1">Spacious, supervised dog care where dogs are free to be dogs.</p>
+      <div class="row" data-fade data-d="2"><a class="btn mag " href="https://www.woofland.co.nz/booking-pricing">Book Free Trial <i></i></a><a class="btn line mag" href="#services">Explore Woofland <i></i></a></div>
     </div></div>
     <div class="hslide" data-s="1"><div class="wrap">
       <div class="eyebrow" data-fade>Dog Daycare</div>
       <h2 class="display"><span class="ln"><span>Play</span></span><span class="ln"><span><span class="it">hard.</span></span></span></h2>
-      <p class="lead" data-fade data-d="1">Small, well-matched playgroups and structured days, grouped by energy level and temperament.</p>
+      <p class="lead" data-fade data-d="1">Structured activities, positive social play and small playgroups, matched by energy level and temperament.</p>
     </div></div>
     <div class="hslide" data-s="2"><div class="wrap">
-      <div class="eyebrow" data-fade>Rest, every day</div>
+      <div class="eyebrow" data-fade>Rest time, every day</div>
       <h2 class="display"><span class="ln"><span>Rest</span></span><span class="ln"><span><span class="it">harder.</span></span></span></h2>
-      <p class="lead" data-fade data-d="1">Quiet time is part of every day, so they come home content and happily exhausted.</p>
+      <p class="lead" data-fade data-d="1">Dogs come home happily exhausted. Rest is built into every day, with a caring team always close by.</p>
     </div></div>
     <div class="hmeta" aria-hidden="true"><b id="hnum">01</b><div class="dots"><i class="on"></i><i></i><i></i></div><span class="hint">Scroll</span></div>
   </div>
@@ -66,52 +65,65 @@
 <section class="mq" aria-label="Our services"><div class="rowm" id="mq1" aria-hidden="true"></div>
   <div class="wrap"><div class="also"><b>Also at Woofland</b><span>Farm Adventure</span><span>Osteopathy &amp; Mobility</span><span>Woof Van Pick-up &amp; Drop-off</span></div></div></section>
 
-<section class="sec story" aria-label="Our story"><div class="wrap grid">
-  <div>
-    <div class="eyebrow">How Woofland began</div>
-    <p class="q" id="storyq">Why does good dog care have to feel so <em>restrictive?</em></p>
-    <p>That question started Woofland. A couple planning a trip, their dog Hapu, and a search for somewhere that felt like home without giving up the standards of a professional facility.</p>
-    <p>So we built it. Purpose-built spaces in place of cages. Calm routines in place of isolation. Dogs treated as individuals, by people who are genuinely there.</p>
-    <a class="tlink" href="/about">Read our story</a>
+<section class="mani" aria-label="About Woofland"><div class="wrap">
+  <div class="grid">
+    <div class="side"><div class="eyebrow">Our philosophy</div><img id="maniDog" src="/img/d1.webp" alt=""></div>
+    <p class="big2" id="storyq">Care for dogs who need more than a backyard. A purpose-built facility with clean, secure and fully supervised spaces designed for comfort, play and socialisation, where every dog feels relaxed, safe and happy.</p>
   </div>
-  <figure class="frame clip" data-parbox style="margin:0"><img data-par="14" src="/media/founders" alt="Ryan, Faezeh and Hapu, the family behind Woofland" loading="lazy"><figcaption>Ryan, Faezeh and Hapu</figcaption></figure>
+  <div class="foot2"><span></span><div><p>At Woofland Wairau we bring the same trusted care and philosophy of "where dogs are dogs" to a modern urban setting, with dedicated indoor and outdoor areas, small playgroups and a caring team.</p><a class="tlink" href="/about">Our story</a></div></div>
 </div></section>
 
-<section class="sec" id="services" aria-label="Services" style="padding-top:0"><div class="wrap">
-  <div class="svc-head"><div><div class="eyebrow">What we do</div><h2 class="display h2" style="margin-top:1rem">Two things, done <span class="it">properly.</span></h2></div>
-    <p>Daycare for their days. A hotel for their nights. Both under one roof on Wairau Road.</p></div>
-  <div class="stack">
-    <article class="big">
-      <div class="ph" data-parbox><img data-par="14" src="/media/ig12" alt="A happy dog at Woofland daycare" loading="lazy"></div>
-      <div class="tx"><div class="eyebrow">Monday to Friday, 7am to 7pm</div><h3 class="display">Dog Daycare</h3><p class="sub">Days designed around your dog.</p>
-        <p>Cage-free, fully supervised daycare. Play, enrichment and proper rest, balanced to your dog's energy and temperament by handlers who watch every interaction.</p>
-        <div class="facts"><div><span>From</span><span>$47 a day</span></div><div><span>Playgroups</span><span>Matched by energy and temperament</span></div><div><span>Transport</span><span>Woof Van pick-up and drop-off</span></div></div>
-        <div class="row"><a class="btn mag " href="/dog-daycare">Explore Daycare <i></i></a></div></div>
-    </article>
-    <article class="big">
-      <div class="ph" data-parbox><img data-par="14" src="/media/lounge" alt="The Pack Lounge at Woofland Dog Hotel" loading="lazy"></div>
-      <div class="tx"><div class="eyebrow">Overnight stays</div><h3 class="display">Dog Hotel</h3><p class="sub">Someone is always home.</p>
-        <p>At night, a caregiver sleeps in the Pack Lounge beside the dogs. No cages, no crates and never an empty building after dark. Choose the shared lounge, a private Paw Pod or an Alpha Suite.</p>
-        <div class="facts"><div><span>From</span><span>$63 a night</span></div><div><span>Overnight</span><span>A caregiver sleeps with the dogs</span></div><div><span>Daytime</span><span>Play, exercise and attention every day</span></div></div>
-        <div class="row"><a class="btn mag " href="/dog-hotel">Explore the Hotel <i></i></a></div></div>
-    </article>
+<section class="reel" id="reel" aria-label="Services"><span id="services" style="position:absolute;top:0"></span>
+  <div class="rstage">
+    <div class="rhead"><div class="wrap"><h2 class="display">Purpose-built care.</h2><span class="cnt"><span id="rcnt">01</span> / 03</span></div></div>
+    <div class="rtrack" id="rtrack">
+      <article class="panel">
+        <div class="ph"><img class="pic" src="/img/space.webp" alt="Woofland team member with dogs in the daycare space"><span class="num">01</span></div>
+        <img class="pdog" src="/img/d7.webp" alt="" style="width:clamp(100px,15vw,210px);left:36%;top:-17%" data-px="-90">
+        <div class="txt"><h3 class="display">Dog <span class="it">Daycare</span></h3><p class="sub">Days designed around your dog.</p>
+          <p>Designed for movement, balance and positive social play. Structured activities, rest time and supervised interaction in a safe, calm, cage-free environment.</p>
+          <div class="tags"><span>From $47 a day</span><span>7am to 7pm, Mon to Fri</span><span>Small playgroups</span></div>
+          <div><a class="btn mag " href="/dog-daycare">Explore Daycare <i></i></a></div></div>
+      </article>
+      <article class="panel">
+        <div class="ph"><img class="pic" src="/img/lounge.webp" alt="The Pack Lounge at the Woofland Dog Hotel"><span class="num">02</span></div>
+        <img class="pdog" src="/img/d6.webp" alt="" style="width:clamp(140px,20vw,280px);left:26%;bottom:-12%" data-px="-70">
+        <div class="txt"><h3 class="display">Dog <span class="it">Hotel</span></h3><p class="sub">Someone sleeps beside them, every night.</p>
+          <p>Home-like overnight stays with plenty of human interaction. In the Pack Lounge a caregiver stays and sleeps with the dogs, with private pods for dogs who enjoy their own space.</p>
+          <div class="tags"><span>From $63 a night</span><span>Staff on site day and night</span><span>Cage-free</span></div>
+          <div><a class="btn mag " href="/dog-hotel">Explore the Hotel <i></i></a></div></div>
+      </article>
+      <article class="panel alsop">
+        <div class="eyebrow">Also at Woofland</div>
+        <h3 class="display">A little <span class="it">extra.</span></h3>
+        <div class="g">
+          <a class="mini" href="/farm-adventure"><img src="/img/d3.webp" alt="" loading="lazy"><div><h4>Farm Adventure</h4><p>At least two hours with paws on a real farm, added to a daycare day.</p></div></a>
+          <a class="mini" href="/dog-osteopathy"><img src="/img/d4.webp" alt="" loading="lazy"><div><h4>Osteopathy &amp; Mobility</h4><p>Gentle support for movement and comfort with a visiting practitioner.</p></div></a>
+          <a class="mini" href="/dog-daycare#transport"><img src="/img/d8.webp" alt="" loading="lazy"><div><h4>Woof Van</h4><p>Pick-up and drop-off across the North Shore and beyond.</p></div></a>
+        </div>
+      </article>
+    </div>
   </div>
-  <div class="also"><div class="eyebrow">Also at Woofland</div><div class="g">
-    <a class="mini" href="/farm-adventure"><img src="/img/d3.webp" alt="" loading="lazy"><div><h4>Farm Adventure</h4><p>At least two hours with paws on a real farm, added to a daycare day.</p></div></a>
-    <a class="mini" href="/dog-osteopathy"><img src="/img/d4.webp" alt="" loading="lazy"><div><h4>Osteopathy &amp; Mobility</h4><p>Gentle support for movement and comfort with a visiting practitioner.</p></div></a>
-    <a class="mini" href="/dog-daycare#transport"><img src="/img/d8.webp" alt="" loading="lazy"><div><h4>Woof Van</h4><p>Pick-up and drop-off across the North Shore and beyond.</p></div></a>
-  </div></div>
-</div></section>
+</section>
 
 <section class="night" aria-label="Overnight care" data-parbox>
-  <div class="bg" data-par="10"><img src="/media/sleep" alt="A dog asleep at Woofland" loading="lazy"></div><div class="stars"></div>
+  <div class="bg" data-par="10"><img src="/img/suite.webp" alt="Dogs resting in a Woofland hotel room" loading="lazy"></div><div class="stars"></div>
   <div class="wrap c" data-in><div class="eyebrow" data-fade>The Woofland difference</div>
-    <h2>While you sleep, someone sleeps <em>beside them.</em></h2>
+    <h2>While you sleep, someone sleeps <em class="it" style="font-style:normal">beside them.</em></h2>
     <div class="cols"><p class="lead" data-fade data-d="1">Most kennels go dark at closing time. At Woofland a team member stays the night in the Pack Lounge, so there is always a familiar human within reach.</p>
       <div class="time" data-fade data-d="2">Present, day and night.</div></div></div>
 </section>
 
-<section class="sec" aria-label="Why Woofland"><div class="wrap">
+<section class="sec" id="hotel" aria-label="Dog Hotel rooms"><div class="wrap">
+  <div class="svc-head" data-in><div><div class="eyebrow">Dog Hotel by Woofland</div><h2 class="display h2" style="margin-top:1rem"><span class="ln"><span>Three ways</span></span><span class="ln"><span>to <span class="it">stay.</span></span></span></h2></div>
+    <p data-fade>Different dogs rest differently. We match the room and routine to temperament, social comfort and wellbeing.</p></div>
+  <a class="room" data-room="0" href="/dog-hotel"><span class="n">01</span><h3 class="display">Pack Lounge</h3><p>A home-style lounge for social dogs, with a caregiver sleeping in the room overnight.</p><span class="pr">$80&ndash;$90<small>per night</small></span><span class="inl"><img src="/img/lounge.webp" alt="Pack Lounge" loading="lazy"></span></a>
+  <a class="room" data-room="1" href="/dog-hotel"><span class="n">02</span><h3 class="display">Paw Pod</h3><p>A private enclosed pod for dogs who prefer their own calm sleeping space.</p><span class="pr">$63&ndash;$70<small>per night</small></span><span class="inl"><img src="/img/pod.webp" alt="Paw Pod" loading="lazy"></span></a>
+  <a class="room" data-room="2" href="/dog-hotel"><span class="n">03</span><h3 class="display">Alpha Suite</h3><p>A spacious private suite for dogs from the same family.</p><span class="pr">$160&ndash;$180<small>per night</small></span><span class="inl"><img src="/img/suite.webp" alt="Alpha Suite" loading="lazy"></span></a>
+</div></section>
+<div class="rfloat" id="rfloat" aria-hidden="true"><img src="/img/lounge.webp" alt=""><img src="/img/pod.webp" alt=""><img src="/img/suite.webp" alt=""></div>
+
+<section class="sec" aria-label="Why Woofland" style="padding-top:0"><div class="wrap">
   <div class="svc-head"><div><div class="eyebrow">Why owners trust us</div><h2 class="display h2" style="margin-top:1rem">Trusted by the <span class="it">North Shore.</span></h2></div>
     <a class="tlink" href="https://www.google.com/maps/search/?api=1&query=Woofland+Dog+Daycare+%26+Hotel&query_place_id=ChIJA3HbypQ_DW0RkW0YpzXgdvQ">Read our Google reviews</a></div>
   <div class="bento">
@@ -125,23 +137,18 @@
   </div>
 </div></section>
 
-<section class="sec rev" id="reviews" aria-label="Reviews"><div class="wrap">
+<section class="sec rev" id="reviews" aria-label="Reviews"><div class="ghost5" aria-hidden="true">5.0</div><div class="wrap">
   <div class="head"><div><div class="eyebrow">In their words</div><h2 class="display h2" style="margin-top:1rem">Loved by dogs. <span class="it">Reviewed by humans.</span></h2></div>
     <a class="btn line mag" href="https://www.google.com/maps/search/?api=1&query=Woofland+Dog+Daycare+%26+Hotel&query_place_id=ChIJA3HbypQ_DW0RkW0YpzXgdvQ">All 123 Google reviews <i></i></a></div>
   <div class="wall"><div class="col"><article class="rv hl"><div class="st"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg></div><q>Woofland is the first daycare I've ever put my dog into and hands down the best one out there.</q><div class="by"><i>G</i><span>Google review</span></div></article><article class="rv"><div class="st"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg></div><q>Outstanding service for our precious little dog Mylo. Loved the regular photos on social media and Mylo had such a wonderful time getting to know the people and other dogs.</q><div class="by"><i>D</i><span><b style="color:var(--cream)">Dan</b> &middot; Mylo's owner</span></div></article><article class="rv"><div class="st"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg></div><q>Every time Piki comes home he is exhausted (in the best way). He's started to socialise with other dogs which makes us so happy. I cannot recommend Woofland enough.</q><div class="by"><i>G</i><span>Google review</span></div></article></div><div class="col"><article class="rv"><div class="st"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg></div><q>We had a smooth transition for our big pup who has never been to daycare. Now, he gets so excited to go and doesn't even look back.</q><div class="by"><i>G</i><span>Google review</span></div></article><article class="rv hl"><div class="st"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg></div><q>It's clear how much they genuinely care about the dogs.</q><div class="by"><i>G</i><span>Google review</span></div></article><article class="rv"><div class="st"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg></div><q>Our doggies are always so excited to get picked up for daycare! The staff are so caring and communicative, and I love seeing the videos of their adventures each day.</q><div class="by"><i>A</i><span><b style="color:var(--cream)">Alicia</b> &middot; Meela's owner</span></div></article><article class="rv"><div class="st"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg></div><q>Woofland is the first daycare I've ever put my dog into and hands down the best one out there. My dog Honey hears the word daycare and is immediately at the front door itching to go.</q><div class="by"><i>G</i><span>Google review</span></div></article></div><div class="col"><article class="rv"><div class="st"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg></div><q>Awesome all day care, our boy comes home happily exhausted after a full day of play. Great reliable pickup and drop off service and really good communication.</q><div class="by"><i>N</i><span><b style="color:var(--cream)">Nic</b> &middot; Beau's owner</span></div></article><article class="rv hl"><div class="st"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg></div><q>We instantly felt at ease and knew our dogs would be in good hands.</q><div class="by"><i>G</i><span>Google review</span></div></article><article class="rv"><div class="st"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg></div><q>It's clear how much they genuinely care about the dogs. We always feel that Kai is loved and well looked after.</q><div class="by"><i>G</i><span>Google review</span></div></article><article class="rv hl"><div class="st"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg></div><q>We had a smooth transition for our big pup who has never been to daycare.</q><div class="by"><i>G</i><span>Google review</span></div></article></div></div>
 </div></section>
 
-<section class="film" aria-label="Daily photos"><div class="wrap head">
-  <div><div class="eyebrow">Real days, real dogs</div><h2 class="display h2" style="margin-top:1rem">The daily <span class="it">pack.</span></h2></div>
-  <a class="tlink" href="https://www.instagram.com/wooflandnz/">Follow @wooflandnz</a></div>
-  <div class="strip" id="strip"><figure><img src="/media/ig5" alt="A Woofland dog at daycare" loading="lazy"></figure><figure><img src="/media/ig2" alt="A Woofland dog at daycare" loading="lazy"></figure><figure><img src="/media/ig11" alt="A Woofland dog at daycare" loading="lazy"></figure><figure><img src="/media/ig0" alt="A Woofland dog at daycare" loading="lazy"></figure><figure><img src="/media/ig12" alt="A Woofland dog at daycare" loading="lazy"></figure><figure><img src="/media/ig6" alt="A Woofland dog at daycare" loading="lazy"></figure><figure><img src="/media/ig3" alt="A Woofland dog at daycare" loading="lazy"></figure><figure><img src="/media/ig10" alt="A Woofland dog at daycare" loading="lazy"></figure><figure><img src="/media/ig8" alt="A Woofland dog at daycare" loading="lazy"></figure></div></section>
-
-<section class="sec" id="start" aria-label="How it works" style="padding-top:clamp(2rem,5vw,4rem)"><div class="wrap">
-  <div class="eyebrow">Getting started</div><h2 class="display h2" style="margin-top:1rem">Three steps to a <span class="it">tail-wagging</span> start.</h2>
+<section class="sec" id="start" aria-label="How it works"><div class="wrap">
+  <div class="eyebrow">Getting started</div><h2 class="display h2" style="margin-top:1rem">3 simple steps to a <span class="it">tail-wagging</span> experience.</h2>
   <div class="steps3">
-    <div class="st3"><b>1</b><h3>Free trial and assessment</h3><p>We introduce your dog to our spaces and team, and make sure Woofland is the right fit for them.</p></div>
-    <div class="st3"><b>2</b><h3>Registration</h3><p>A short form with the essentials about your dog, so their first proper day starts smoothly.</p></div>
-    <div class="st3"><b>3</b><h3>Booking</h3><p>Book daycare or a hotel stay through the client portal, whenever it suits you.</p></div>
+    <div class="st3"><b>1</b><h3>Assessment / Free Trial</h3><p>We introduce your dog to our facilities and assess their compatibility with our environment, ensuring a happy and safe experience for all.</p></div>
+    <div class="st3"><b>2</b><h3>Registration</h3><p>Complete our easy registration form with the essential information about your dog, for a smooth start.</p></div>
+    <div class="st3"><b>3</b><h3>Booking</h3><p>Once the assessment is complete and you are ready to proceed, book your dog with confidence.</p></div>
   </div>
 </div></section>
 <section class="sec faq" aria-label="Questions"><div class="wrap grid">
@@ -150,7 +157,7 @@
 <section class="cta" id="contact" aria-label="Book">
   <div class="word display" id="ctaWord" aria-hidden="true">Woofland Woofland</div>
   <div class="wrap"><div class="grid">
-    <div><h2 class="display">Your dog's first day is <span class="it">on us.</span></h2><p>Every dog starts with a free trial and assessment, so we can meet them properly and you can see Woofland for yourself.</p>
+    <div><h2 class="display">Ready to treat your dog to a place <span class="it">they'll love?</span></h2><p>Book now and let the fun begin at Woofland, where dogs are dogs.</p>
       <div class="row"><a class="btn mag dark" href="https://www.woofland.co.nz/booking-pricing">Book Free Trial <i></i></a><a class="btn line mag" href="https://www.woofland.co.nz/client-login">Client Login <i></i></a></div></div>
     <div class="jump"><img src="/img/d7.webp" alt="" loading="lazy"></div>
   </div></div>
@@ -166,7 +173,7 @@
     </div>
     <div class="areas"><b>Woof Van pick-up areas</b><span>North Shore</span><span>Dairy Flat</span><span>Silverdale</span><span>Riverhead</span><span>Kumeu</span><span>Coatesville</span><span>Hobsonville</span><span>Westgate</span><span>Massey</span><span>Ponsonby</span><span>Grey Lynn</span><span>Auckland CBD</span></div>
   </div>
-  <div class="giant" aria-hidden="true">Woofland</div>
+  <div class="gw"><img class="fdog" src="/img/d3.webp" alt="" loading="lazy"><div class="giant" aria-hidden="true">Woofland</div></div>
   <div class="legal"><div class="wrap" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem 2rem;width:100%">
     <span>&copy; 2026 Woofland Dog Daycare &amp; Hotel. PackPro member.</span>
     <span><a href="https://www.woofland.co.nz/terms-conditions">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp; <a href="https://www.woofland.co.nz/privacy-policy">Privacy Policy</a></span></div></div>
