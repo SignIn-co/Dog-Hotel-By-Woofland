@@ -153,7 +153,7 @@ STRIP = "".join(f'<figure><img src="{M(k)}" alt="A Woofland dog at daycare" load
 HOME_CTA = cta('Ready to treat your dog to a place <span class="it">they\'ll love?</span>', "Book now and let the fun begin at Woofland, where dogs are dogs.")
 home = f'''
 <div class="loader" id="loader"><div class="in2"><img src="/img/logo.webp" alt=""><b id="lcount">0</b><div class="lbar"><i id="lbar"></i></div></div></div>
-<section class="hero" id="hero" aria-label="Woofland" data-src="/img/hero1.webp,/img/space.webp,/img/hero3.webp" data-fy="0.5,0.5,0.5">
+<section class="hero" id="hero" aria-label="Woofland" data-src="/img/hero1.webp,/img/hero2.webp,/img/hero3.webp" data-fy="0.5,0.5,0.5">
   <div class="hstage">
     <div class="hframe" id="hframe"><div class="hfall" id="hfall"></div><canvas id="gl" aria-hidden="true"></canvas><div class="hshade"></div></div>
     <div class="hslide" data-s="0"><div class="wrap">
@@ -189,10 +189,10 @@ home = f'''
 
 <section class="reel" id="reel" aria-label="Services"><span id="services" style="position:absolute;top:0"></span>
   <div class="rstage">
-    <div class="rhead"><div class="wrap"><h2 class="display">Purpose-built care.</h2><span class="cnt"><span id="rcnt">01</span> / 03</span></div></div>
+    <div class="rhead"><div class="wrap"><h2 class="display">Purpose-built care.</h2><span class="cnt"><span id="rcnt">01</span> / 03</span></div><span class="swipehint">Swipe <i>&rarr;</i></span></div>
     <div class="rtrack" id="rtrack">
       <article class="panel">
-        <div class="ph"><img class="pic" src="/img/space.webp" alt="Woofland team member with dogs in the daycare space"><span class="num">01</span></div>
+        <div class="ph"><img class="pic" src="/img/space.webp" alt="Dogs from the Woofland pack"><span class="num">01</span></div>
         <img class="pdog" src="/img/d7.webp" alt="" style="width:clamp(100px,15vw,210px);left:36%;top:-17%" data-px="-90">
         <div class="txt"><h3 class="display">Dog <span class="it">Daycare</span></h3><p class="sub">Days designed around your dog.</p>
           <p>Designed for movement, balance and positive social play. Structured activities, rest time and supervised interaction in a safe, calm, cage-free environment.</p>
