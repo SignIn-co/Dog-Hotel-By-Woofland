@@ -373,7 +373,7 @@ page("dog-osteopathy", "Dog Osteopathy & Mobility Support Auckland | Woofland", 
 about = phero("Our Story", "About Woofland", '<span class="ln"><span>Built for</span></span><span class="ln"><span><span class="it">Hapu.</span></span></span>',
   "At the heart of Woofland is a couple, their dog Hapu, and a simple question: why does good dog care have to feel so restrictive?", "founders", "Ryan, Faezeh and Hapu", "Story") + f'''
 <section class="sec" style="padding-top:clamp(2rem,5vw,4rem)"><div class="wrap split rev2">
-  <figure class="frame clip" data-parbox style="margin:0">{img_tag("store", "The Woofland building on Wairau Road")}</figure>
+  <figure class="frame clip" data-parbox style="margin:0">{img_tag("/img/storefront.webp", "The Woofland building on Wairau Road")}</figure>
   <div><div class="eyebrow">The gap we saw</div><h2 class="display h2">The warmth of a home. The standards of a <span class="it">facility.</span></h2>
     <p>When planning an overseas trip, Ryan and Faezeh struggled to find a place that truly suited Hapu. Most kennels and dog hotels followed the same model: long hours alone, confined to cages or small suites, with limited human interaction.</p>
     <p>Home-based care felt warmer, but often lacked consistency, structure and long-term commitment. There was no place that combined the presence of a home with the professionalism and purpose-built design of a dedicated facility.</p>
