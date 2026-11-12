@@ -418,3 +418,6 @@ html[data-theme=light]{--ink:#fdf5e8;--coal:#f7e9d2;--char:#f0ddc0;--cream:#2a16
  .nav .right{gap:.7rem}
 }
 @media (prefers-reduced-motion:reduce){.hring,.fhint i,.swipehint i{animation:none}.fin{transition:none}}
+
+.night h2.homey{font-family:'Fraunces','Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-stretch:100%;font-variation-settings:'SOFT' 100,'WONK' 1,'opsz' 144;font-size:clamp(2.7rem,7vw,6.6rem);line-height:1.02;letter-spacing:-.015em;max-width:15ch;text-wrap:balance;text-shadow:0 6px 40px rgba(0,0,0,.35)}
+.night h2.homey em{font-style:italic;font-weight:700;background:linear-gradient(180deg,#ffd98a,#f5a623 60%,#e8820c);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
