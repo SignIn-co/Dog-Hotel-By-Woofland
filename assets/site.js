@@ -69,7 +69,7 @@ if(rfloat&&fine){var rfi=$$('img',rfloat);$$('.room[data-room]').forEach(functio
 
 /* WebGL hero (home) */
 var canvas=$('#gl'),gl=null,U={},tex=[],tsize=[],hero=$('#hero'),hframe=$('#hframe'),hfall=$('#hfall'),
-    slides=$$('.hslide'),hill=$('#hill'),hstory=$('#hstory'),htrack=$('#htrack'),hdog=$('#hdog'),hleash=$('#hleashp'),hbone=$('#hbone'),hsun=$('.hsun'),hstage=$('.hstage'),hdp={},hpose='walk',dots=$$('.hmeta .dots i'),hnum=$('#hnum'),curSlide=-2,ready=!hero,started=!hero,
+    slides=$$('.hslide'),hill=$('#hill'),hstory=$('#hstory'),htrack=$('#htrack'),hdog=$('#hdog'),hleash=$('#hleashp'),hbone=$('#hbone'),hsun=$('.hsun'),hstage=$('.hstage'),hdp={},hst={},hpose='walk',dots=$$('.hmeta .dots i'),hnum=$('#hnum'),curSlide=-2,ready=!hero,started=!hero,
     heroSrc=hero?hero.dataset.src.split(','):[],heroFy=hero?hero.dataset.fy.split(',').map(Number):[];
 var VS='attribute vec2 p;varying vec2 v;void main(){v=p*.5+.5;gl_Position=vec4(p,0.,1.);}';
 var FS=['precision highp float;varying vec2 v;uniform sampler2D t0,t1;uniform vec2 res,s0,s1,mouse,fy;uniform float pr,time,vel;',
@@ -133,7 +133,7 @@ if(gw){var txt=gw.textContent;gw.textContent='';var letters=txt.split('').map(fu
 
 /* measure */
 var pars=$$('[data-par]'),M={},ctaWord=$('#ctaWord'),giant=$('.foot .giant'),bgw=$('.phero .bgw'),bigs=$$('.big');
-function measure(){S.vh=innerHeight;S.vw=innerWidth;if(htrack){htrack._S=0;hstory._H=0}
+function measure(){S.vh=innerHeight;S.vw=innerWidth;if(htrack){htrack._S=0;hstory._H=0;hstory._lead=innerWidth<900?.12:.3}
   if(reel){reel.style.height=(S.vw<900?panels.length*75+25:panels.length*85+30)+'vh';}
   if(hero)M.hero={t:top(hero),h:hero.offsetHeight};
   if(reel)M.reel={t:top(reel),h:reel.offsetHeight,w:rtrack.scrollWidth};
@@ -154,21 +154,40 @@ function frame(now){requestAnimationFrame(frame);
   if(fine&&cur)cur.style.transform='translate3d('+mouse.px+'px,'+mouse.py+'px,0)';
 
   if(hero&&M.hero&&S.sy<M.hero.t+M.hero.h){
-    var hp=clamp((S.sy-M.hero.t)/(M.hero.h-vh)),P=seg(.37,.5,hp)+seg(.62,.78,hp),idx=P>=1?1:0,f=P-idx;if(P>=2){idx=1;f=1}
+    var hp=clamp((S.sy-M.hero.t)/(M.hero.h-vh)),P=seg(.52,.62,hp)+seg(.72,.84,hp),idx=P>=1?1:0,f=P-idx;if(P>=2){idx=1;f=1}
     var si=P<.3?0:(P>.72&&P<1.3)?1:(P>1.72?2:-1);if(hp>.965)si=-1;setSlide(si);
     if(hill){var hk=clamp(P),he=hk*hk*(3-2*hk),hs=hstage.getBoundingClientRect(),sr=hsun.getBoundingClientRect(),cx=sr.left+sr.width/2-hs.left,cy=sr.top+sr.height/2-hs.top,
       mr=Math.sqrt(Math.pow(Math.max(cx,hs.width-cx),2)+Math.pow(Math.max(cy,hs.height-cy),2))+4;
       hill.style.setProperty('--hole',(he*mr).toFixed(1)+'px');hill.style.visibility=hk>=1?'hidden':'';hstory.style.visibility=hk>=1?'hidden':'';hstage.classList.toggle('onphoto',hk>.45);
       hstory.style.opacity=(1-seg(.15,.7,hk)).toFixed(3);
-      var st=seg(0,.34,hp),Sp=htrack._S||(htrack._S=parseFloat(getComputedStyle(htrack).getPropertyValue('--S'))*vw/100),Hh=hstory._H||(hstory._H=hstory.querySelector('.hp').getBoundingClientRect().height);
-      htrack.style.transform='translate3d('+(-Math.min(st/.9,1)*3*Sp).toFixed(1)+'px,0,0)';
-      var K=[[0,-.42],[.1,-.12],[.17,.16],[.21,.16],[.34,1.34],[.5,1.52],[.62,2.3],[.8,2.72],[.86,2.86],[.95,3],[1,3]],dx=K[0][1];for(var ki=0;ki<K.length-1;ki++){if(st>=K[ki][0]&&st<=K[ki+1][0]){dx=K[ki][1]+(K[ki+1][1]-K[ki][1])*(st-K[ki][0])/(K[ki+1][0]-K[ki][0])}}
-      var ps=st<.17?'walk':st<.21?'sniff':st<.52?'walk':st<.86?'ball':st<.95?'jump':'sleep',lap=-Hh*.36,jq=seg(.86,.95,st),
-        dyy=ps==='jump'?lap*jq-Math.sin(jq*Math.PI)*Hh*.22:ps==='sleep'?lap:ps==='sniff'?0:-Math.abs(Math.sin(st*(ps==='ball'?150:95)))*Hh*(ps==='ball'?.04:.02);
-      if(!hdp.walk)$$('img',hdog).forEach(function(im){hdp[im.dataset.p]=im});if(ps!==hpose){hdp[hpose].classList.remove('on');hdp[ps].classList.add('on');hpose=ps}
-      hdog.style.transform='translate3d('+(dx*Sp).toFixed(1)+'px,'+dyy.toFixed(1)+'px,0)';
-      var bq=seg(.05,.11,st);hbone.style.opacity=(seg(.04,.06,st)*(1-seg(.19,.21,st))).toFixed(2);hbone.style.transform='translate3d('+(Hh*.2+bq*(.16*Sp-Hh*.2)).toFixed(1)+'px,'+(-Hh*.72*(1-bq*bq)-Hh*.03).toFixed(1)+'px,0) rotate('+(bq*200).toFixed(0)+'deg)';
-      var lo=seg(.3,.34,st)*(1-seg(.49,.52,st));hleash.style.opacity=lo.toFixed(2);if(lo>0){var hx=Sp+Hh*.2,hy=-Hh*.5,nx=dx*Sp-Hh*.04,ny=-Hh*.3+dyy;hleash.setAttribute('d','M'+hx.toFixed(1)+' '+hy.toFixed(1)+' Q'+((hx+nx)/2).toFixed(1)+' '+(Math.max(hy,ny)+Hh*.12).toFixed(1)+' '+nx.toFixed(1)+' '+ny.toFixed(1))}}
+      var st=seg(0,.5,hp),Sp=htrack._S||(htrack._S=parseFloat(getComputedStyle(htrack).getPropertyValue('--S'))*vw/100),Hh=hstory._H||(hstory._H=hstory.querySelector('.hp').getBoundingClientRect().height);
+      if(!hdp.walk){$$('img',hdog).forEach(function(im){hdp[im.dataset.p]=im});hst.E=$('#hE');hst.M=$('#hM');hst.T=$('#hT');hst.C=$('#hC');hst.ball=$('#hball')}
+      var kf=function(K,s){if(s<=K[0][0])return K[0][1];for(var i=0;i<K.length-1;i++){if(s<=K[i+1][0]){var u=(s-K[i][0])/(K[i+1][0]-K[i][0]);u=u*u*(3-2*u);return K[i][1]+(K[i+1][1]-K[i][1])*u}}return K[K.length-1][1]};
+      var dX=kf([[0,0],[.17,.95],[.22,.95],[.38,2.3],[.43,2.3],[.58,3.3],[.62,3.3],[.7,4.25],[.86,5.25],[.93,5.6]],st),
+          eX=kf([[0,.45],[.27,1.55]],st),mX=kf([[.43,2],[.58,3]],st),tX=3.55,cX=5.6,
+          cam=dX+hstory._lead,camE=seg(.84,.95,st);cam=cam+(cX-cam)*camE*camE*(3-2*camE);
+      var ps=st<.17?(Math.floor(dX*9)%2?'stand':'walk'):st<.22?'sniff':st<.375?(Math.floor(dX*9)%2?'stand':'walk'):st<.435?'sit':st<.575?(Math.floor(dX*9)%2?'stand':'walk'):st<.62?'sit':st<.7?'run':st<.86?'ball':st<.93?'jump':'sleep',
+          mv=(ps==='walk'||ps==='stand'||ps==='ball'||ps==='run'),ph=dX*9*Math.PI,lap=-Hh*.37,jq=seg(.86,.93,st),
+          dY=ps==='jump'?lap*jq-Math.sin(jq*Math.PI)*Hh*.24:ps==='sleep'?lap:mv?-Math.abs(Math.sin(ph))*Hh*(ps==='run'?.06:.022):0,rot=mv?Math.sin(ph*2)*(ps==='run'?4:1.6):0;
+      htrack.style.transform='translate3d('+(-cam*Sp).toFixed(1)+'px,0,0)';
+      if(ps!==hpose){hdp[hpose].classList.remove('on');hdp[ps].classList.add('on');hpose=ps}
+      hdog.style.transform='translate3d('+(dX*Sp).toFixed(1)+'px,'+dY.toFixed(1)+'px,0) rotate('+rot.toFixed(2)+'deg)';
+      var hb=function(x,moving){return 'translate3d('+(x*Sp).toFixed(1)+'px,'+(moving?-Math.abs(Math.sin(x*11))*Hh*.018:0).toFixed(1)+'px,0)'};
+      hst.E.style.transform=hb(eX,st<.27);hst.M.style.transform=hb(mX,st>.43&&st<.58);hst.T.style.transform=hb(tX,false);hst.C.style.transform=hb(cX,false);
+      hst.E.style.opacity=(1-seg(.36,.44,st)).toFixed(2);
+      /* bone: in hand, drops, sniffed, carried, dropped at the leash */
+      var bx,by,br=0,bo=1,mxo=Hh*.27,myo=-Hh*.3;
+      if(st<.09){bo=0;bx=0;by=0}
+      else if(st<.14){var bq=seg(.09,.14,st);bx=kf([[0,.45],[.27,1.55]],.09)*Sp+Hh*.22+(Sp*1.02-(kf([[0,.45],[.27,1.55]],.09)*Sp+Hh*.22))*bq;by=-Hh*.66*(1-bq*bq)-Hh*.025;br=bq*220}
+      else if(st<.215){bx=Sp*1.02;by=-Hh*.025;br=220}
+      else if(st<.4){bx=dX*Sp+mxo;by=dY+myo;br=10}
+      else{var bd=seg(.4,.42,st);bx=2.3*Sp+mxo;by=myo+(-Hh*.025-myo)*bd;br=10+bd*30;bo=1-seg(.6,.7,st)}
+      hbone.style.opacity=bo.toFixed(2);hbone.style.transform='translate3d('+bx.toFixed(1)+'px,'+by.toFixed(1)+'px,0) rotate('+br.toFixed(0)+'deg)';
+      /* leash */
+      var lo=seg(.4,.43,st)*(1-seg(.585,.615,st));hleash.style.opacity=lo.toFixed(2);if(lo>0){var hx=mX*Sp+Hh*.2,hy=-Hh*.5,nx=dX*Sp+Hh*.12,ny=-Hh*.3+dY;hleash.setAttribute('d','M'+hx.toFixed(1)+' '+hy.toFixed(1)+' Q'+((hx+nx)/2).toFixed(1)+' '+(Math.max(hy,ny)+Hh*.16).toFixed(1)+' '+nx.toFixed(1)+' '+ny.toFixed(1))}
+      /* ball: in the hand, thrown, caught */
+      var tq=seg(.62,.7,st),thx=tX*Sp+Hh*.36,thy=-Hh*.74,cxb=4.25*Sp+mxo,cyb=myo;
+      hst.ball.style.opacity=st>=.7?0:1;hst.ball.style.transform='translate3d('+(thx+(cxb-thx)*tq).toFixed(1)+'px,'+(thy+(cyb-thy)*tq-Math.sin(tq*Math.PI)*Hh*.5).toFixed(1)+'px,0)';}
     var k=seg(.9,1,hp);hframe.style.transform='scale('+(1-k*.08).toFixed(4)+')';hframe.style.borderRadius=(k*34).toFixed(1)+'px';
     if(glok&&tex[0]&&started){var ia=tex[idx]?idx:0,ib=tex[idx+1]?idx+1:ia;
       gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,tex[ia]);gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,tex[ib]);

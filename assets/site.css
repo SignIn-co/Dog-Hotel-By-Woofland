@@ -79,7 +79,7 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{fon
 .runner .dg img.on{opacity:1}.runner .dg img[data-p="sleep"]{height:28px}.runner .dg img[data-p="sit"]{height:48px}
 
 /* home hero */
-.hero{position:relative;height:540vh}
+.hero{position:relative;height:720vh}
 .hstage{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--ink);--H:31vh;--gy:49vh;--cx:50%;--cy:calc(var(--gy) - var(--H)*.56);--r:calc(var(--H)*.5)}
 .hframe{position:absolute;inset:0;overflow:hidden;will-change:transform;transform-origin:50% 60%}
 #gl,.hfall{position:absolute;inset:0;width:100%;height:100%}.hfall{background-size:cover;background-position:center;filter:brightness(.6)}
@@ -406,7 +406,7 @@ html[data-theme=light]{--ink:#fdf5e8;--coal:#f7e9d2;--char:#f0ddc0;--cream:#2a16
 [data-theme=light] .it{background:linear-gradient(180deg,#f5a623 0%,#e07c08 55%,#b85404 100%);-webkit-background-clip:text;background-clip:text}
 [data-theme=light] .hstage.onphoto .it,[data-theme=light] .night .it{background:linear-gradient(180deg,#ffd27a 0%,#f5a623 55%,#d87408 100%);-webkit-background-clip:text;background-clip:text}
 @media (max-width:900px){
- .hstage{--H:23vh;--gy:40vh}.htrack{--S:94}
+ .hstage{--H:23vh;--gy:40vh}.htrack{--S:74}
  .hslide[data-s="0"] .eyebrow{display:none}.hslide[data-s="0"] .row{flex-wrap:nowrap;gap:.5rem}.hslide[data-s="0"] .btn{padding:.85rem 1.05rem;font-size:.88rem}
  .rstage{justify-content:flex-start;padding-top:calc(env(safe-area-inset-top,0px) + 8.4rem)}.rhead{top:calc(env(safe-area-inset-top,0px) + 4rem)}
  .panel .txt h3{font-size:2rem}
@@ -463,3 +463,16 @@ html[data-theme=light]{--ink:#fdf5e8;--coal:#f7e9d2;--char:#f0ddc0;--cream:#2a16
 .hdog img[data-p=sleep]{height:calc(var(--H)*.2);scale:1 1}
 .hdog img[data-p=jump]{height:calc(var(--H)*.5)}
 .hsc p{font-family:var(--body);font-weight:500;font-size:clamp(.85rem,1.05vw,1rem);color:var(--lead)}
+
+/* story v3: camera follows the dog */
+.htrack{--S:34}
+.hsc{left:0;will-change:transform}
+.hdog img{height:auto;width:calc(var(--H)*.62);transition:none}
+.hdog img[data-p=walk],.hdog img[data-p=run],.hdog img[data-p=ball],.hdog img[data-p=sniff],.hdog img[data-p=sit]{scale:-1 1}
+.hdog img[data-p=stand],.hdog img[data-p=jump],.hdog img[data-p=sleep]{scale:1 1}
+.hdog img[data-p=sit]{width:calc(var(--H)*.46);height:auto}
+.hdog img[data-p=jump]{width:calc(var(--H)*.46);height:auto}
+.hdog img[data-p=sleep]{width:calc(var(--H)*.46);height:auto}
+.hdog img[data-p=sniff]{height:auto}
+.hball{position:absolute;left:0;top:0;width:calc(var(--H)*.075);height:calc(var(--H)*.075);margin:calc(var(--H)*-.037) 0 0 calc(var(--H)*-.037);border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe08a,#f5a623 60%,#d9760a)}
+@media (max-width:900px){.htrack{--S:72}}
