@@ -49,6 +49,8 @@ var stars=$('.night .stars');if(stars){var sh='';for(var i=0;i<46;i++)sh+='<i st
 
 /* reviews wall: duplicate columns for seamless loop */
 $$('.wall .col').forEach(function(c){c.innerHTML+=c.innerHTML});
+var wcols=$$('.wall .col'),wt0=performance.now();function wallTick(){var s=(performance.now()-wt0)/1000;for(var i=0;i<wcols.length;i++){var c=wcols[i],half=c.scrollHeight/2+8,sp=[22,18,16][i%3],o=(s*sp)%half;c.style.transform='translate3d(0,'+(i%2?-(half-o):-o).toFixed(1)+'px,0)'}requestAnimationFrame(wallTick)}if(wcols.length)requestAnimationFrame(wallTick);
+var skipB=$('#skip');if(skipB)skipB.addEventListener('click',function(){var m=$('.mq')||$('#reel');if(m)window.scrollTo({top:m.getBoundingClientRect().top+(window.scrollY||0),behavior:'smooth'})});
 
 /* film strip */
 var strip=$('#strip'),film={x:0,v:0,drag:false,lx:0,w:0};
@@ -158,7 +160,7 @@ function frame(now){requestAnimationFrame(frame);
     var si=P<.3?0:(P>.72&&P<1.3)?1:(P>1.72?2:-1);if(hp>.965)si=-1;setSlide(si);
     if(hill){var hk=clamp(P),he=hk*hk*(3-2*hk),hs=hstage.getBoundingClientRect(),sr=hsun.getBoundingClientRect(),cx=sr.left+sr.width/2-hs.left,cy=sr.top+sr.height/2-hs.top,
       mr=Math.sqrt(Math.pow(Math.max(cx,hs.width-cx),2)+Math.pow(Math.max(cy,hs.height-cy),2))+4;
-      hill.style.setProperty('--hole',(he*mr).toFixed(1)+'px');hill.style.visibility=hk>=1?'hidden':'';hstory.style.visibility=hk>=1?'hidden':'';hstage.classList.toggle('onphoto',hk>.45);
+      hill.style.setProperty('--hole',(he*mr).toFixed(1)+'px');hill.style.visibility=hk>=1?'hidden':'';hstory.style.visibility=hk>=1?'hidden':'';hstage.classList.toggle('onphoto',hk>.45);if(skipB)skipB.classList.toggle('gone',hp>.42);
       hstory.style.opacity=(1-seg(.15,.7,hk)).toFixed(3);
       var st=seg(0,.44,hp),Sp=htrack._S||(htrack._S=parseFloat(getComputedStyle(htrack).getPropertyValue('--S'))*vw/100),Hh=hstory._H||(hstory._H=hstory.querySelector('.hp').getBoundingClientRect().height);
       if(!hst.E){hst.E=$('#hE');hst.M=$('#hM');hst.T=$('#hT');hst.C=$('#hC');hst.ball=$('#hball')}

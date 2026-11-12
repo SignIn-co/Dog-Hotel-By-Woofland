@@ -83,7 +83,7 @@ FOOT = f'''<footer class="foot">
   </div>
   <div class="gw"><img class="fdog" src="/img/d3.webp" alt="" loading="lazy"><div class="giant" aria-hidden="true">Woofland</div></div>
   <div class="legal"><div class="wrap" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem 2rem;width:100%">
-    <span>&copy; 2026 Woofland Dog Daycare &amp; Hotel. PackPro member.</span>
+    <span>&copy; 2026 Woofland Dog Daycare &amp; Hotel. PackPro member 2026.</span>
     <span><a href="https://www.woofland.co.nz/terms-conditions">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp; <a href="https://www.woofland.co.nz/privacy-policy">Privacy Policy</a></span></div></div>
 </footer>
 <script src="/assets/site.js"></script>
@@ -171,6 +171,7 @@ home = f'''
         <div class="hgrass"></div><div class="hdog" id="hdog"><div class="hspr" id="hspr"></div><img class="hslp" id="hslp" src="/img/d6.webp" alt=""></div>
       </div>
     </div>
+    <button class="skip" id="skip" type="button" aria-label="Skip the intro story"><i></i><span><small>In a hurry?</small>Skip the story</span></button>
     <div class="hslide" data-s="0"><div class="wrap">
       <div class="eyebrow" data-fade>Premium Dog Daycare and Hotel &middot; North Shore, Auckland</div>
       <h1 class="display"><span class="ln"><span>Where dogs</span></span><span class="ln"><span>are <span class="it">dogs.</span></span></span></h1>
@@ -265,7 +266,7 @@ home = f'''
     <div class="cell c-a"><div class="k">Vet-founded</div><div><h3>Care led by experience.</h3><p>Founder Ryan holds a veterinary degree and has spent over five years in New Zealand's animal health industry.</p></div></div>
     <div class="cell c-b"><div class="k">No cages</div><div><h3>Cage-free. Crate-free.</h3><p>Purpose-built spaces, never confinement.</p></div><img class="dogi" src="/img/d10.webp" alt="" loading="lazy"></div>
     <div class="cell c-c"><div class="k">Assessed first</div><div><h3>Every dog is met properly.</h3><p>A free trial before any dog joins group play.</p></div></div>
-    <div class="cell c-d" style="flex-direction:row;align-items:center;justify-content:flex-start"><img class="badge" src="/img/packpro.webp" alt="PackPro member 2025" loading="lazy"><div><div class="k">PackPro member 2025</div><h3 style="margin-top:.5rem">Part of the dog daycare professionals network.</h3></div></div>
+    <div class="cell c-d" style="flex-direction:row;align-items:center;justify-content:flex-start"><img class="badge" src="/img/packpro26.webp" alt="PackPro member 2026" loading="lazy"><div><div class="k">PackPro member 2026</div><h3 style="margin-top:.5rem">Part of the dog daycare professionals network.</h3></div></div>
   </div>
 </div></section>
 
