@@ -168,7 +168,7 @@ home = f'''
         <svg class="hbone" id="hbone" viewBox="0 0 40 16" aria-hidden="true"><path d="M8 5h24a4 4 0 1 1 3 3 4 4 0 1 1-3 3H8a4 4 0 1 1-3-3 4 4 0 1 1 3-3z" fill="#fbeedd"/></svg>
         <i class="hball" id="hball"></i>
         <svg class="hleash" aria-hidden="true"><path id="hleashp" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
-        <div class="hdog" id="hdog"><img data-p="walk" class="on" src="/img/d10.webp" alt=""><img data-p="stand" src="/img/d0.webp" alt=""><img data-p="sniff" src="/img/d5.webp" alt=""><img data-p="sit" src="/img/d1.webp" alt=""><img data-p="run" src="/img/d3.webp" alt=""><img data-p="ball" src="/img/d8.webp" alt=""><img data-p="jump" src="/img/d7.webp" alt=""><img data-p="sleep" src="/img/d6.webp" alt=""></div>
+        <div class="hgrass"></div><div class="hdog" id="hdog"><img data-p="walk" class="on" src="/img/d8nb.webp" alt=""><img data-p="stand" src="/img/d0.webp" alt=""><img data-p="sniff" src="/img/d5.webp" alt=""><img data-p="sit" src="/img/d1.webp" alt=""><img data-p="run" src="/img/d3.webp" alt=""><img data-p="jump" src="/img/d7.webp" alt=""><img data-p="sleep" src="/img/d6.webp" alt=""></div>
       </div>
     </div>
     <div class="hslide" data-s="0"><div class="wrap">

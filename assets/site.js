@@ -133,7 +133,7 @@ if(gw){var txt=gw.textContent;gw.textContent='';var letters=txt.split('').map(fu
 
 /* measure */
 var pars=$$('[data-par]'),M={},ctaWord=$('#ctaWord'),giant=$('.foot .giant'),bgw=$('.phero .bgw'),bigs=$$('.big');
-function measure(){S.vh=innerHeight;S.vw=innerWidth;if(htrack){htrack._S=0;hstory._H=0;hstory._lead=innerWidth<900?.12:.3}
+function measure(){S.vh=innerHeight;S.vw=innerWidth;if(htrack){htrack._S=0;hstory._H=0;hstory._lead=innerWidth<900?.1:.25}
   if(reel){reel.style.height=(S.vw<900?panels.length*75+25:panels.length*85+30)+'vh';}
   if(hero)M.hero={t:top(hero),h:hero.offsetHeight};
   if(reel)M.reel={t:top(reel),h:reel.offsetHeight,w:rtrack.scrollWidth};
@@ -154,40 +154,43 @@ function frame(now){requestAnimationFrame(frame);
   if(fine&&cur)cur.style.transform='translate3d('+mouse.px+'px,'+mouse.py+'px,0)';
 
   if(hero&&M.hero&&S.sy<M.hero.t+M.hero.h){
-    var hp=clamp((S.sy-M.hero.t)/(M.hero.h-vh)),P=seg(.52,.62,hp)+seg(.72,.84,hp),idx=P>=1?1:0,f=P-idx;if(P>=2){idx=1;f=1}
+    var hp=clamp((S.sy-M.hero.t)/(M.hero.h-vh)),P=seg(.62,.7,hp)+seg(.78,.88,hp),idx=P>=1?1:0,f=P-idx;if(P>=2){idx=1;f=1}
     var si=P<.3?0:(P>.72&&P<1.3)?1:(P>1.72?2:-1);if(hp>.965)si=-1;setSlide(si);
     if(hill){var hk=clamp(P),he=hk*hk*(3-2*hk),hs=hstage.getBoundingClientRect(),sr=hsun.getBoundingClientRect(),cx=sr.left+sr.width/2-hs.left,cy=sr.top+sr.height/2-hs.top,
       mr=Math.sqrt(Math.pow(Math.max(cx,hs.width-cx),2)+Math.pow(Math.max(cy,hs.height-cy),2))+4;
       hill.style.setProperty('--hole',(he*mr).toFixed(1)+'px');hill.style.visibility=hk>=1?'hidden':'';hstory.style.visibility=hk>=1?'hidden':'';hstage.classList.toggle('onphoto',hk>.45);
       hstory.style.opacity=(1-seg(.15,.7,hk)).toFixed(3);
-      var st=seg(0,.5,hp),Sp=htrack._S||(htrack._S=parseFloat(getComputedStyle(htrack).getPropertyValue('--S'))*vw/100),Hh=hstory._H||(hstory._H=hstory.querySelector('.hp').getBoundingClientRect().height);
+      var st=seg(0,.6,hp),Sp=htrack._S||(htrack._S=parseFloat(getComputedStyle(htrack).getPropertyValue('--S'))*vw/100),Hh=hstory._H||(hstory._H=hstory.querySelector('.hp').getBoundingClientRect().height);
       if(!hdp.walk){$$('img',hdog).forEach(function(im){hdp[im.dataset.p]=im});hst.E=$('#hE');hst.M=$('#hM');hst.T=$('#hT');hst.C=$('#hC');hst.ball=$('#hball')}
       var kf=function(K,s){if(s<=K[0][0])return K[0][1];for(var i=0;i<K.length-1;i++){if(s<=K[i+1][0]){var u=(s-K[i][0])/(K[i+1][0]-K[i][0]);u=u*u*(3-2*u);return K[i][1]+(K[i+1][1]-K[i][1])*u}}return K[K.length-1][1]};
-      var dX=kf([[0,0],[.17,.95],[.22,.95],[.38,2.3],[.43,2.3],[.58,3.3],[.62,3.3],[.7,4.25],[.86,5.25],[.93,5.6]],st),
-          eX=kf([[0,.45],[.27,1.55]],st),mX=kf([[.43,2],[.58,3]],st),tX=3.55,cX=5.6,
+      var HV=2.2,eX=.55+HV*st,mX=2.76+HV*st,tX=4.8+HV*st,cX=9,
+          dX=kf([[0,0],[.13,.72],[.17,.72],[.38,3.8],[.42,3.8],[.56,4.21],[.68,6],[.76,7.25],[.88,8.6],[.94,9]],st),
           cam=dX+hstory._lead,camE=seg(.84,.95,st);cam=cam+(cX-cam)*camE*camE*(3-2*camE);
-      var ps=st<.17?(Math.floor(dX*9)%2?'stand':'walk'):st<.22?'sniff':st<.375?(Math.floor(dX*9)%2?'stand':'walk'):st<.435?'sit':st<.575?(Math.floor(dX*9)%2?'stand':'walk'):st<.62?'sit':st<.7?'run':st<.86?'ball':st<.93?'jump':'sleep',
-          mv=(ps==='walk'||ps==='stand'||ps==='ball'||ps==='run'),ph=dX*9*Math.PI,lap=-Hh*.37,jq=seg(.86,.93,st),
-          dY=ps==='jump'?lap*jq-Math.sin(jq*Math.PI)*Hh*.24:ps==='sleep'?lap:mv?-Math.abs(Math.sin(ph))*Hh*(ps==='run'?.06:.022):0,rot=mv?Math.sin(ph*2)*(ps==='run'?4:1.6):0;
+      var stepB=Math.floor(dX*6.5)%2===1,wk=stepB?'stand':'walk',
+          ps=st<.13?wk:st<.17?'sniff':st<.378?wk:st<.422?'sit':st<.68?wk:st<.76?'run':st<.88?wk:st<.94?'jump':'sleep',
+          mv=(ps==='walk'||ps==='stand'||ps==='run'),ph=dX*6.5*Math.PI,lap=-Hh*.37,jq=seg(.88,.94,st),
+          dY=ps==='jump'?lap*jq-Math.sin(jq*Math.PI)*Hh*.24:ps==='sleep'?lap:mv?-Math.abs(Math.sin(ph))*Hh*(ps==='run'?.07:.02):0,rot=ps==='run'?Math.sin(ph*2)*5:0;
       htrack.style.transform='translate3d('+(-cam*Sp).toFixed(1)+'px,0,0)';
       if(ps!==hpose){hdp[hpose].classList.remove('on');hdp[ps].classList.add('on');hpose=ps}
       hdog.style.transform='translate3d('+(dX*Sp).toFixed(1)+'px,'+dY.toFixed(1)+'px,0) rotate('+rot.toFixed(2)+'deg)';
-      var hb=function(x,moving){return 'translate3d('+(x*Sp).toFixed(1)+'px,'+(moving?-Math.abs(Math.sin(x*11))*Hh*.018:0).toFixed(1)+'px,0)'};
-      hst.E.style.transform=hb(eX,st<.27);hst.M.style.transform=hb(mX,st>.43&&st<.58);hst.T.style.transform=hb(tX,false);hst.C.style.transform=hb(cX,false);
-      hst.E.style.opacity=(1-seg(.36,.44,st)).toFixed(2);
-      /* bone: in hand, drops, sniffed, carried, dropped at the leash */
-      var bx,by,br=0,bo=1,mxo=Hh*.27,myo=-Hh*.3;
-      if(st<.09){bo=0;bx=0;by=0}
-      else if(st<.14){var bq=seg(.09,.14,st);bx=kf([[0,.45],[.27,1.55]],.09)*Sp+Hh*.22+(Sp*1.02-(kf([[0,.45],[.27,1.55]],.09)*Sp+Hh*.22))*bq;by=-Hh*.66*(1-bq*bq)-Hh*.025;br=bq*220}
-      else if(st<.215){bx=Sp*1.02;by=-Hh*.025;br=220}
-      else if(st<.4){bx=dX*Sp+mxo;by=dY+myo;br=10}
-      else{var bd=seg(.4,.42,st);bx=2.3*Sp+mxo;by=myo+(-Hh*.025-myo)*bd;br=10+bd*30;bo=1-seg(.6,.7,st)}
-      hbone.style.opacity=bo.toFixed(2);hbone.style.transform='translate3d('+bx.toFixed(1)+'px,'+by.toFixed(1)+'px,0) rotate('+br.toFixed(0)+'deg)';
+      var hb=function(x,ph2){return 'translate3d('+(x*Sp).toFixed(1)+'px,'+(-Math.abs(Math.sin(st*150+ph2))*Hh*.016).toFixed(1)+'px,0)'};
+      hst.E.style.transform=hb(eX,0);hst.M.style.transform=hb(mX,1);hst.T.style.transform=hb(tX,2);hst.C.style.transform='translate3d('+(cX*Sp).toFixed(1)+'px,0,0)';
+      /* what the dog carries sits at its mouth */
+      var mxo=Hh*.28,myo=(ps==='stand'?-Hh*.44:ps==='sit'?-Hh*.5:ps==='run'?-Hh*.33:-Hh*.36)+dY;
+      /* bone: falls from the hand, is sniffed, carried, then left when the leash goes on */
+      var bx,by,br=0,bo=1,bg=-Hh*.025;
+      if(st<.06){bo=0;bx=0;by=0}
+      else if(st<.1){var bq=seg(.06,.1,st),b0=(.55+HV*.06)*Sp+Hh*.2,b1=.72*Sp+mxo;bx=b0+(b1-b0)*bq;by=-Hh*.66*(1-bq*bq)+bg;br=bq*200}
+      else if(st<.16){bx=.72*Sp+mxo;by=bg;br=200}
+      else if(st<.39){bx=dX*Sp+mxo;by=myo;br=8}
+      else{var bd=seg(.39,.41,st);bx=3.8*Sp+mxo;by=-Hh*.5+(bg+Hh*.5)*bd;br=8+bd*30}
+      hbone.style.opacity=bo;hbone.style.transform='translate3d('+bx.toFixed(1)+'px,'+by.toFixed(1)+'px,0) rotate('+br.toFixed(0)+'deg)';
       /* leash */
-      var lo=seg(.4,.43,st)*(1-seg(.585,.615,st));hleash.style.opacity=lo.toFixed(2);if(lo>0){var hx=mX*Sp+Hh*.2,hy=-Hh*.5,nx=dX*Sp+Hh*.12,ny=-Hh*.3+dY;hleash.setAttribute('d','M'+hx.toFixed(1)+' '+hy.toFixed(1)+' Q'+((hx+nx)/2).toFixed(1)+' '+(Math.max(hy,ny)+Hh*.16).toFixed(1)+' '+nx.toFixed(1)+' '+ny.toFixed(1))}
-      /* ball: in the hand, thrown, caught */
-      var tq=seg(.62,.7,st),thx=tX*Sp+Hh*.36,thy=-Hh*.74,cxb=4.25*Sp+mxo,cyb=myo;
-      hst.ball.style.opacity=st>=.7?0:1;hst.ball.style.transform='translate3d('+(thx+(cxb-thx)*tq).toFixed(1)+'px,'+(thy+(cyb-thy)*tq-Math.sin(tq*Math.PI)*Hh*.5).toFixed(1)+'px,0)';}
+      var lo=seg(.4,.42,st)*(1-seg(.555,.575,st));hleash.style.opacity=lo.toFixed(2);if(lo>0){var hx=mX*Sp+Hh*.2,hy=-Hh*.5,nx=dX*Sp+Hh*.14,ny=-Hh*.3+dY;hleash.setAttribute('d','M'+hx.toFixed(1)+' '+hy.toFixed(1)+' Q'+((hx+nx)/2).toFixed(1)+' '+(Math.max(hy,ny)+Hh*.16).toFixed(1)+' '+nx.toFixed(1)+' '+ny.toFixed(1))}
+      /* ball: in the hand, thrown, caught, carried, on the couch */
+      var tq=seg(.68,.76,st),thx=tX*Sp+Hh*.36,thy=-Hh*.74,cxb=7.25*Sp+mxo,bxx,byy;
+      if(st<.68){bxx=thx;byy=thy}else if(st<.76){var t0x=(4.8+HV*.68)*Sp+Hh*.36;bxx=t0x+(cxb-t0x)*tq;byy=thy+(-Hh*.36-thy)*tq-Math.sin(tq*Math.PI)*Hh*.55}else{bxx=dX*Sp+mxo;byy=myo}
+      hst.ball.style.opacity=st>=.9?0:1;hst.ball.style.transform='translate3d('+bxx.toFixed(1)+'px,'+byy.toFixed(1)+'px,0)';}
     var k=seg(.9,1,hp);hframe.style.transform='scale('+(1-k*.08).toFixed(4)+')';hframe.style.borderRadius=(k*34).toFixed(1)+'px';
     if(glok&&tex[0]&&started){var ia=tex[idx]?idx:0,ib=tex[idx+1]?idx+1:ia;
       gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,tex[ia]);gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,tex[ib]);
