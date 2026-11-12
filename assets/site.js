@@ -69,7 +69,7 @@ if(rfloat&&fine){var rfi=$$('img',rfloat);$$('.room[data-room]').forEach(functio
 
 /* WebGL hero (home) */
 var canvas=$('#gl'),gl=null,U={},tex=[],tsize=[],hero=$('#hero'),hframe=$('#hframe'),hfall=$('#hfall'),
-    slides=$$('.hslide'),hill=$('#hill'),hstory=$('#hstory'),htrack=$('#htrack'),hdog=$('#hdog'),hleash=$('#hleashp'),hbone=$('#hbone'),hsun=$('.hsun'),hstage=$('.hstage'),hdp={},hst={},hpose='walk',dots=$$('.hmeta .dots i'),hnum=$('#hnum'),curSlide=-2,ready=!hero,started=!hero,
+    slides=$$('.hslide'),hill=$('#hill'),hstory=$('#hstory'),htrack=$('#htrack'),hdog=$('#hdog'),hleash=$('#hleashp'),hclip=$('#hclip'),hbone=$('#hbone'),hsun=$('.hsun'),hstage=$('.hstage'),hdp={},hst={},hpose='walk',dots=$$('.hmeta .dots i'),hnum=$('#hnum'),curSlide=-2,ready=!hero,started=!hero,
     heroSrc=hero?hero.dataset.src.split(','):[],heroFy=hero?hero.dataset.fy.split(',').map(Number):[];
 var VS='attribute vec2 p;varying vec2 v;void main(){v=p*.5+.5;gl_Position=vec4(p,0.,1.);}';
 var FS=['precision highp float;varying vec2 v;uniform sampler2D t0,t1;uniform vec2 res,s0,s1,mouse,fy;uniform float pr,time,vel;',
@@ -163,33 +163,34 @@ function frame(now){requestAnimationFrame(frame);
       var st=seg(0,.6,hp),Sp=htrack._S||(htrack._S=parseFloat(getComputedStyle(htrack).getPropertyValue('--S'))*vw/100),Hh=hstory._H||(hstory._H=hstory.querySelector('.hp').getBoundingClientRect().height);
       if(!hdp.walk){$$('img',hdog).forEach(function(im){hdp[im.dataset.p]=im});hst.E=$('#hE');hst.M=$('#hM');hst.T=$('#hT');hst.C=$('#hC');hst.ball=$('#hball')}
       var kf=function(K,s){if(s<=K[0][0])return K[0][1];for(var i=0;i<K.length-1;i++){if(s<=K[i+1][0]){var u=(s-K[i][0])/(K[i+1][0]-K[i][0]);u=u*u*(3-2*u);return K[i][1]+(K[i+1][1]-K[i][1])*u}}return K[K.length-1][1]};
-      var HV=2.2,eX=.55+HV*st,mX=2.76+HV*st,tX=4.8+HV*st,cX=9,
-          dX=kf([[0,0],[.13,.72],[.17,.72],[.38,3.8],[.42,3.8],[.56,4.21],[.68,6],[.76,7.25],[.88,8.6],[.94,9]],st),
+      var dX=kf([[0,0],[.1,.72],[.14,.72],[.32,4.6],[.36,4.6],[.52,6.4],[.56,6.4],[.66,8.8],[.74,10.05],[.87,11.4],[.94,11.8]],st),cX=11.8,
+          eX=.75+.3*dX,mX=dX<4.6?3.02+.3*dX:dX<=6.4?dX-.2:6.2+.3*(dX-6.4),tX=6.41+.3*dX,
           cam=dX+hstory._lead,camE=seg(.84,.95,st);cam=cam+(cX-cam)*camE*camE*(3-2*camE);
       var stepB=Math.floor(dX*6.5)%2===1,wk=stepB?'stand':'walk',
-          ps=st<.13?wk:st<.17?'sniff':st<.378?wk:st<.422?'sit':st<.68?wk:st<.76?'run':st<.88?wk:st<.94?'jump':'sleep',
-          mv=(ps==='walk'||ps==='stand'||ps==='run'),ph=dX*6.5*Math.PI,lap=-Hh*.37,jq=seg(.88,.94,st),
+          ps=st<.1?wk:st<.14?'sniff':st<.318?wk:st<.362?'sit':st<.518?wk:st<.562?'sit':st<.66?wk:st<.74?'run':st<.87?wk:st<.94?'jump':'sleep',
+          mv=(ps==='walk'||ps==='stand'||ps==='run'),ph=dX*6.5*Math.PI,lap=-Hh*.37,jq=seg(.87,.94,st),
           dY=ps==='jump'?lap*jq-Math.sin(jq*Math.PI)*Hh*.24:ps==='sleep'?lap:mv?-Math.abs(Math.sin(ph))*Hh*(ps==='run'?.07:.02):0,rot=ps==='run'?Math.sin(ph*2)*5:0;
       htrack.style.transform='translate3d('+(-cam*Sp).toFixed(1)+'px,0,0)';
       if(ps!==hpose){hdp[hpose].classList.remove('on');hdp[ps].classList.add('on');hpose=ps}
       hdog.style.transform='translate3d('+(dX*Sp).toFixed(1)+'px,'+dY.toFixed(1)+'px,0) rotate('+rot.toFixed(2)+'deg)';
-      var hb=function(x,ph2){return 'translate3d('+(x*Sp).toFixed(1)+'px,'+(-Math.abs(Math.sin(st*150+ph2))*Hh*.016).toFixed(1)+'px,0)'};
-      hst.E.style.transform=hb(eX,0);hst.M.style.transform=hb(mX,1);hst.T.style.transform=hb(tX,2);hst.C.style.transform='translate3d('+(cX*Sp).toFixed(1)+'px,0,0)';
-      /* what the dog carries sits at its mouth */
+      var hb=function(x){return 'translate3d('+(x*Sp).toFixed(1)+'px,'+(-Math.abs(Math.sin(x*16))*Hh*.016).toFixed(1)+'px,0)'};
+      hst.E.style.transform=hb(eX);hst.M.style.transform=hb(mX);hst.T.style.transform=hb(tX);hst.C.style.transform='translate3d('+(cX*Sp).toFixed(1)+'px,0,0)';
       var mxo=Hh*.28,myo=(ps==='stand'?-Hh*.44:ps==='sit'?-Hh*.5:ps==='run'?-Hh*.33:-Hh*.36)+dY;
-      /* bone: falls from the hand, is sniffed, carried, then left when the leash goes on */
+      /* bone */
       var bx,by,br=0,bo=1,bg=-Hh*.025;
-      if(st<.06){bo=0;bx=0;by=0}
-      else if(st<.1){var bq=seg(.06,.1,st),b0=(.55+HV*.06)*Sp+Hh*.2,b1=.72*Sp+mxo;bx=b0+(b1-b0)*bq;by=-Hh*.66*(1-bq*bq)+bg;br=bq*200}
-      else if(st<.16){bx=.72*Sp+mxo;by=bg;br=200}
-      else if(st<.39){bx=dX*Sp+mxo;by=myo;br=8}
-      else{var bd=seg(.39,.41,st);bx=3.8*Sp+mxo;by=-Hh*.5+(bg+Hh*.5)*bd;br=8+bd*30}
+      if(st<.04){bo=0;bx=0;by=0}
+      else if(st<.08){var bq=seg(.04,.08,st),b0=(.75+.3*kf([[0,0],[.1,.72]],.04))*Sp+Hh*.2,b1=.72*Sp+mxo;bx=b0+(b1-b0)*bq;by=-Hh*.66*(1-bq*bq)+bg;br=bq*200}
+      else if(st<.13){bx=.72*Sp+mxo;by=bg;br=200}
+      else if(st<.33){bx=dX*Sp+mxo;by=myo;br=8}
+      else{var bd=seg(.33,.35,st);bx=4.6*Sp+mxo;by=-Hh*.5+(bg+Hh*.5)*bd;br=8+bd*30}
       hbone.style.opacity=bo;hbone.style.transform='translate3d('+bx.toFixed(1)+'px,'+by.toFixed(1)+'px,0) rotate('+br.toFixed(0)+'deg)';
-      /* leash */
-      var lo=seg(.4,.42,st)*(1-seg(.555,.575,st));hleash.style.opacity=lo.toFixed(2);if(lo>0){var hx=mX*Sp+Hh*.2,hy=-Hh*.5,nx=dX*Sp+Hh*.14,ny=-Hh*.3+dY;hleash.setAttribute('d','M'+hx.toFixed(1)+' '+hy.toFixed(1)+' Q'+((hx+nx)/2).toFixed(1)+' '+(Math.max(hy,ny)+Hh*.16).toFixed(1)+' '+nx.toFixed(1)+' '+ny.toFixed(1))}
-      /* ball: in the hand, thrown, caught, carried, on the couch */
-      var tq=seg(.68,.76,st),thx=tX*Sp+Hh*.36,thy=-Hh*.74,cxb=7.25*Sp+mxo,bxx,byy;
-      if(st<.68){bxx=thx;byy=thy}else if(st<.76){var t0x=(4.8+HV*.68)*Sp+Hh*.36;bxx=t0x+(cxb-t0x)*tq;byy=thy+(-Hh*.36-thy)*tq-Math.sin(tq*Math.PI)*Hh*.55}else{bxx=dX*Sp+mxo;byy=myo}
+      /* leash: clips on while the dog sits, stays for the walk, unclips and swings back to the hand */
+      var lon=seg(.335,.355,st),loff=seg(.525,.55,st),lo=lon*(1-seg(.55,.565,st));hleash.style.opacity=lo.toFixed(2);hclip.style.opacity=lo.toFixed(2);
+      if(lo>0){var hx=mX*Sp+Hh*.2,hy=-Hh*.5,nx0=dX*Sp+(ps==='sit'?Hh*.08:Hh*.15),ny0=(ps==='sit'?-Hh*.36:-Hh*.31)+dY,nx=nx0+(hx+Hh*.02-nx0)*loff,ny=ny0+(hy+Hh*.3-ny0)*loff;
+        hleash.setAttribute('d','M'+hx.toFixed(1)+' '+hy.toFixed(1)+' Q'+((hx+nx)/2).toFixed(1)+' '+(Math.max(hy,ny)+Hh*.15*(1-loff)).toFixed(1)+' '+nx.toFixed(1)+' '+ny.toFixed(1));hclip.setAttribute('cx',nx.toFixed(1));hclip.setAttribute('cy',ny.toFixed(1))}
+      /* ball */
+      var tq=seg(.66,.74,st),thx=tX*Sp+Hh*.36,thy=-Hh*.74,bxx,byy;
+      if(st<.66){bxx=thx;byy=thy}else if(st<.74){var t0x=(6.41+.3*8.8)*Sp+Hh*.36,cxb=10.05*Sp+mxo;bxx=t0x+(cxb-t0x)*tq;byy=thy+(-Hh*.36-thy)*tq-Math.sin(tq*Math.PI)*Hh*.55}else{bxx=dX*Sp+mxo;byy=myo}
       hst.ball.style.opacity=st>=.9?0:1;hst.ball.style.transform='translate3d('+bxx.toFixed(1)+'px,'+byy.toFixed(1)+'px,0)';}
     var k=seg(.9,1,hp);hframe.style.transform='scale('+(1-k*.08).toFixed(4)+')';hframe.style.borderRadius=(k*34).toFixed(1)+'px';
     if(glok&&tex[0]&&started){var ia=tex[idx]?idx:0,ib=tex[idx+1]?idx+1:ia;
