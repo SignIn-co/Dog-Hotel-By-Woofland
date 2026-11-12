@@ -21,7 +21,7 @@ def head(title, desc, path):
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#1a110b">
+<meta name="theme-color" content="#0a0a0a">
 <script>try{{var t=localStorage.getItem("wf-theme");if(t==="light")document.documentElement.dataset.theme="light"}}catch(e){{}}</script>
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
@@ -56,7 +56,7 @@ def chrome(path):
   <p>0800 147 369 &middot; info@woofland.co.nz<br>137 Wairau Road, Wairau Valley, Auckland</p></div>
 </div>
 <div class="runner" id="runner" aria-hidden="true"><div class="trk"><i id="rfill"></i></div>
-  <div class="dg" id="rdog"><img data-p="run" src="/img/d3.webp" alt=""><img data-p="walk" src="/img/d8.webp" alt=""><img data-p="sit" class="on" src="/img/d1.webp" alt=""><img data-p="sleep" src="/img/d6.webp" alt=""></div></div>
+  <div class="dg" id="rdog"><div class="rspr" id="rspr"></div><img data-p="sleep" id="rslp" src="/img/d6.webp" alt="" style="opacity:0"></div></div>
 '''
 
 def cta(h="Your dog's first day is <span class=\"it\">on us.</span>", p="Every dog starts with a free trial and assessment, so we can meet them properly and you can see Woofland for yourself."):

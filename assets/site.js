@@ -85,7 +85,7 @@ var FS=['precision highp float;varying vec2 v;uniform sampler2D t0,t1;uniform ve
 ' float w=(nz-.5)*.07;u0+=w*m;u1-=w*(1.-m);float sh=vel*.004;',
 ' vec3 a=samp(t0,u0,s0,fy.x,sh),b=samp(t1,u1,s1,fy.y,sh);vec3 c=mix(a,b,m);',
 ' float band=smoothstep(0.,.5,m)*smoothstep(1.,.5,m);c+=vec3(1.,.52,.1)*band*.5;',
-' float vg=smoothstep(1.25,.25,length((v-.5)*vec2(1.1,1.)));c*=mix(.55,1.,vg);c*=vec3(1.03,.97,.9)*.86;',
+' float vg=smoothstep(1.25,.25,length((v-.5)*vec2(1.1,1.)));c*=mix(.86,1.,vg);c*=vec3(1.02,1.,.98);',
 ' c+=(h(v*res+time)-.5)*.03;gl_FragColor=vec4(c,1.);}'].join('\n');
 function initGL(){
   if(!canvas)return false;
@@ -118,7 +118,7 @@ if(hero&&loader){
 }else{runner&&runner.classList.add('show');$$('.phero').forEach(function(p){setTimeout(function(){p.classList.add('in')},60)})}
 
 /* runner */
-var rdog=$('#rdog'),rfill=$('#rfill'),poses={},pose='sit',flip=1,idleAt=performance.now(),lastY=window.scrollY||0,spd=0;
+var rdog=$('#rdog'),rfill=$('#rfill'),rspr=$('#rspr'),rslp=$('#rslp'),rph=0,rfr=-1,poses={},pose='sit',flip=1,idleAt=performance.now(),lastY=window.scrollY||0,spd=0;
 if(rdog)$$('img',rdog).forEach(function(i){poses[i.dataset.p]=i});
 function setPose(p){if(p===pose||!poses[p])return;poses[pose].classList.remove('on');poses[p].classList.add('on');pose=p}
 
@@ -154,13 +154,13 @@ function frame(now){requestAnimationFrame(frame);
   if(fine&&cur)cur.style.transform='translate3d('+mouse.px+'px,'+mouse.py+'px,0)';
 
   if(hero&&M.hero&&S.sy<M.hero.t+M.hero.h){
-    var hp=clamp((S.sy-M.hero.t)/(M.hero.h-vh)),P=seg(.54,.66,hp)+seg(.75,.87,hp),idx=P>=1?1:0,f=P-idx;if(P>=2){idx=1;f=1}
+    var hp=clamp((S.sy-M.hero.t)/(M.hero.h-vh)),P=seg(.4,.56,hp)+seg(.7,.86,hp),idx=P>=1?1:0,f=P-idx;if(P>=2){idx=1;f=1}
     var si=P<.3?0:(P>.72&&P<1.3)?1:(P>1.72?2:-1);if(hp>.965)si=-1;setSlide(si);
     if(hill){var hk=clamp(P),he=hk*hk*(3-2*hk),hs=hstage.getBoundingClientRect(),sr=hsun.getBoundingClientRect(),cx=sr.left+sr.width/2-hs.left,cy=sr.top+sr.height/2-hs.top,
       mr=Math.sqrt(Math.pow(Math.max(cx,hs.width-cx),2)+Math.pow(Math.max(cy,hs.height-cy),2))+4;
       hill.style.setProperty('--hole',(he*mr).toFixed(1)+'px');hill.style.visibility=hk>=1?'hidden':'';hstory.style.visibility=hk>=1?'hidden':'';hstage.classList.toggle('onphoto',hk>.45);
       hstory.style.opacity=(1-seg(.15,.7,hk)).toFixed(3);
-      var st=seg(0,.52,hp),Sp=htrack._S||(htrack._S=parseFloat(getComputedStyle(htrack).getPropertyValue('--S'))*vw/100),Hh=hstory._H||(hstory._H=hstory.querySelector('.hp').getBoundingClientRect().height);
+      var st=seg(0,.37,hp),Sp=htrack._S||(htrack._S=parseFloat(getComputedStyle(htrack).getPropertyValue('--S'))*vw/100),Hh=hstory._H||(hstory._H=hstory.querySelector('.hp').getBoundingClientRect().height);
       if(!hst.E){hst.E=$('#hE');hst.M=$('#hM');hst.T=$('#hT');hst.C=$('#hC');hst.ball=$('#hball')}
       var kf=function(K,s){if(s<=K[0][0])return K[0][1];for(var i=0;i<K.length-1;i++){if(s<=K[i+1][0]){var u=(s-K[i][0])/(K[i+1][0]-K[i][0]);u=u*u*(3-2*u);return K[i][1]+(K[i+1][1]-K[i][1])*u}}return K[K.length-1][1]};
       var dX=kf([[0,0],[.11,.72],[.15,.72],[.3,3.4],[.345,3.4],[.5,4.6],[.545,4.6],[.63,6],[.72,7.2],[.86,8.25],[.94,8.6]],st),cX=8.6,
@@ -218,8 +218,11 @@ function frame(now){requestAnimationFrame(frame);
     if(rcnt)rcnt.textContent='0'+(act+1)}
   if(maniDog&&M.q){var md=clamp((S.sy+vh*.8-M.q.t)/(M.q.h+vh*.35));maniDog.style.transform='translate3d(0,'+((md-.5)*-60).toFixed(1)+'px,0) rotate('+((md-.5)*-6).toFixed(2)+'deg)'}
   if(rdog){var dy=S.y-lastY;lastY=S.y;spd=lerp(spd,Math.abs(dy),.25);if(dy>.5)flip=-1;else if(dy<-.5)flip=1;
-    var pg=clamp(S.y/M.doc),bob=0;if(spd>14){setPose('run');bob=-Math.abs(Math.sin(t*16))*6;idleAt=now}else if(spd>.8){setPose('walk');bob=-Math.abs(Math.sin(t*9))*3;idleAt=now}else if(now-idleAt>5000)setPose('sleep');else setPose('sit');
-    rdog.style.transform='translate3d('+(pg*(vw-64)).toFixed(1)+'px,'+bob.toFixed(1)+'px,0) scaleX('+flip+')';rfill.style.transform='scaleX('+pg.toFixed(4)+')'}
+    var pg=clamp(S.y/M.doc),nf,slp=false;rph+=Math.abs(dy);
+    if(spd>16){nf=9+Math.floor(rph/42)%6;idleAt=now}else if(spd>.6){nf=Math.floor(rph/16)%8;idleAt=now}else if(now-idleAt>6000){slp=true;nf=27}else if(now-idleAt>700)nf=27;else nf=24;
+    if(nf!==rfr){rfr=nf;rspr.style.backgroundPosition=((nf%8)/7*100).toFixed(2)+'% '+(Math.floor(nf/8)/4*100).toFixed(2)+'%'}
+    if(slp!==rdog._s){rdog._s=slp;rspr.style.opacity=slp?0:1;rslp.style.opacity=slp?1:0}
+    rdog.style.transform='translate3d('+(pg*(vw-84)).toFixed(1)+'px,0,0) scaleX('+flip+')';rfill.style.transform='scaleX('+pg.toFixed(4)+')'}
 }
 
 /* flip cards */
