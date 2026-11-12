@@ -486,3 +486,7 @@ html[data-theme=light]{--ink:#fdf5e8;--coal:#f7e9d2;--char:#f0ddc0;--cream:#2a16
 
 .hdog{z-index:2}.hleash{z-index:3;color:#ffcf75}.hbone,.hball{z-index:4}
 .hgrass{width:calc(var(--S)*17vw)}
+
+/* animated dog sprite */
+.hspr{position:absolute;bottom:0;left:0;width:calc(var(--H)*.887);height:calc(var(--H)*.73);translate:-50% 1.5%;background:url(/img/dogspr.webp) 0 0/800% 500% no-repeat;filter:drop-shadow(0 12px 14px rgba(60,20,0,.35))}
+.hslp{position:absolute;bottom:0;left:0;max-width:none;width:calc(var(--H)*.46);height:auto;translate:-50% 3%;opacity:0;filter:drop-shadow(0 12px 14px rgba(60,20,0,.35))}
