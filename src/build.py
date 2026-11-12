@@ -21,7 +21,8 @@ def head(title, desc, path):
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#0c0806">
+<meta name="theme-color" content="#1a110b">
+<script>try{{var t=localStorage.getItem("wf-theme");if(t==="light")document.documentElement.dataset.theme="light"}}catch(e){{}}</script>
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
@@ -39,7 +40,7 @@ def chrome(path):
     return f'''<header class="nav" id="nav">
   <a class="brand" href="/" aria-label="Woofland home"><img src="/img/logo.webp" alt="" width="48" height="38"><span>Woofland</span></a>
   <nav class="navpill" aria-label="Main"><span class="blob"></span>{links}<a href="#contact">Contact</a></nav>
-  <div class="right"><a class="login" href="{LOGIN}">Client Login</a>{btn("Book Free Trial")}
+  <div class="right"><button class="tgl" id="tgl" aria-label="Switch between dark and light" title="Dark / light"><i></i></button><a class="login" href="{LOGIN}">Client Login</a>{btn("Book Free Trial")}
     <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button></div>
 </header>
 <div class="menu" id="menu">
@@ -153,9 +154,16 @@ STRIP = "".join(f'<figure><img src="{M(k)}" alt="A Woofland dog at daycare" load
 HOME_CTA = cta('Ready to treat your dog to a place <span class="it">they\'ll love?</span>', "Book now and let the fun begin at Woofland, where dogs are dogs.")
 home = f'''
 <div class="loader" id="loader"><div class="in2"><img src="/img/logo.webp" alt=""><b id="lcount">0</b><div class="lbar"><i id="lbar"></i></div></div></div>
-<section class="hero" id="hero" aria-label="Woofland" data-src="/img/hero1.webp,/img/hero2.webp,/img/hero3.webp" data-fy="0.5,0.5,0.5">
+<section class="hero" id="hero" aria-label="Woofland" data-src="/img/hero2.webp,/img/hero2.webp,/img/hero3.webp" data-fy="0.5,0.5,0.5">
   <div class="hstage">
     <div class="hframe" id="hframe"><div class="hfall" id="hfall"></div><canvas id="gl" aria-hidden="true"></canvas><div class="hshade"></div></div>
+    <div class="hill" id="hill" aria-hidden="true"><div class="hsun"></div><div class="hring"></div></div>
+    <div class="hdogs" id="hdogs" aria-hidden="true">
+      <img src="/img/d6.webp" alt="" style="--x:74%;--y:93%;--w:54%" data-vx=".5" data-vy="1" data-dp=".5">
+      <img src="/img/d3.webp" alt="" style="--x:104%;--y:22%;--w:44%" data-vx="1" data-vy="-.5" data-dp=".8">
+      <img src="/img/d1.webp" alt="" style="--x:16%;--y:80%;--w:34%" data-vx="-1" data-vy=".35" data-dp="1.1">
+      <img src="/img/d7.webp" alt="" style="--x:50%;--y:44%;--w:66%" data-vx="0" data-vy="-1" data-dp="1.6">
+    </div>
     <div class="hslide" data-s="0"><div class="wrap">
       <div class="eyebrow" data-fade>Premium Dog Daycare and Hotel &middot; North Shore, Auckland</div>
       <h1 class="display"><span class="ln"><span>Where dogs</span></span><span class="ln"><span>are <span class="it">dogs.</span></span></span></h1>
@@ -189,19 +197,21 @@ home = f'''
 
 <section class="reel" id="reel" aria-label="Services"><span id="services" style="position:absolute;top:0"></span>
   <div class="rstage">
-    <div class="rhead"><div class="wrap"><h2 class="display">Purpose-built care.</h2><span class="cnt"><span id="rcnt">01</span> / 03</span></div><span class="swipehint">Swipe <i>&rarr;</i></span></div>
+    <div class="rhead"><div class="wrap"><h2 class="display">Purpose-built care.</h2><span class="cnt"><span id="rcnt">01</span> / 03</span></div><span class="swipehint">Scroll or swipe <i>&rarr;</i></span></div>
     <div class="rtrack" id="rtrack">
       <article class="panel">
-        <div class="ph"><img class="pic" src="/img/space.webp" alt="Dogs from the Woofland pack"><span class="num">01</span></div>
-        <img class="pdog" src="/img/d7.webp" alt="" style="width:clamp(100px,15vw,210px);left:36%;top:-17%" data-px="-90">
+        <button class="ph flip" type="button" aria-pressed="false" aria-label="Dog Daycare. Flip the card to see the real daycare floor"><span class="fin">
+          <span class="ff front"><span class="fsun"></span><img class="fart" src="/img/d7.webp" alt=""><span class="fhint"><i></i>Tap to see the real thing</span></span>
+          <span class="ff back"><img class="pic" src="/img/space.webp" alt="A Woofland team member with dogs on the daycare floor"><span class="fhint"><i></i>Tap to flip back</span></span></span></button>
         <div class="txt"><h3 class="display">Dog <span class="it">Daycare</span></h3><p class="sub">Days designed around your dog.</p>
           <p>Designed for movement, balance and positive social play. Structured activities, rest time and supervised interaction in a safe, calm, cage-free environment.</p>
           <div class="tags"><span>From $47 a day</span><span>7am to 7pm, Mon to Fri</span><span>Small playgroups</span></div>
           <div>{btn("Explore Daycare", "/dog-daycare")}</div></div>
       </article>
       <article class="panel">
-        <div class="ph"><img class="pic" src="/img/lounge.webp" alt="The Pack Lounge at the Woofland Dog Hotel"><span class="num">02</span></div>
-        <img class="pdog" src="/img/d6.webp" alt="" style="width:clamp(140px,20vw,280px);left:26%;bottom:-12%" data-px="-70">
+        <button class="ph flip" type="button" aria-pressed="false" aria-label="Dog Hotel. Flip the card to see the Pack Lounge"><span class="fin">
+          <span class="ff front night2"><span class="fsun"></span><img class="fart wide" src="/img/d6.webp" alt=""><span class="fhint"><i></i>Tap to see the real thing</span></span>
+          <span class="ff back"><img class="pic" src="/img/lounge.webp" alt="The Pack Lounge at the Woofland Dog Hotel"><span class="fhint"><i></i>Tap to flip back</span></span></span></button>
         <div class="txt"><h3 class="display">Dog <span class="it">Hotel</span></h3><p class="sub">Someone sleeps beside them, every night.</p>
           <p>Home-like overnight stays with plenty of human interaction. In the Pack Lounge a caregiver stays and sleeps with the dogs, with private pods for dogs who enjoy their own space.</p>
           <div class="tags"><span>From $63 a night</span><span>Staff on site day and night</span><span>Cage-free</span></div>
@@ -257,13 +267,14 @@ home = f'''
   <div class="wall">{WALL}</div>
 </div></section>
 
-<section class="sec" id="start" aria-label="How it works"><div class="wrap">
-  <div class="eyebrow">Getting started</div><h2 class="display h2" style="margin-top:1rem">3 simple steps to a <span class="it">tail-wagging</span> experience.</h2>
-  <div class="steps3">
-    <div class="st3"><b>1</b><h3>Assessment / Free Trial</h3><p>We introduce your dog to our facilities and assess their compatibility with our environment, ensuring a happy and safe experience for all.</p></div>
-    <div class="st3"><b>2</b><h3>Registration</h3><p>Complete our easy registration form with the essential information about your dog, for a smooth start.</p></div>
-    <div class="st3"><b>3</b><h3>Booking</h3><p>Once the assessment is complete and you are ready to proceed, book your dog with confidence.</p></div>
-  </div>
+<section class="sec" id="start" aria-label="How to join"><div class="wrap">
+  <h2 class="display h2">Three steps to join <span class="it">the pack.</span></h2>
+  <p class="lead" style="margin-top:1.2rem">Every dog starts the same way, so every dog here is safe and settled.</p>
+  <ol class="steps3">
+    <li class="st3"><img src="/img/d0.webp" alt="" loading="lazy"><b>1</b><h3>Come for a free assessment</h3><p>Bring your dog in for a free trial visit. We meet them, show them around and check they are happy with us.</p>{btn("Book free assessment")}</li>
+    <li class="st3"><img src="/img/d1.webp" alt="" loading="lazy"><b>2</b><h3>Register your dog</h3><p>After the assessment, fill in one short form with your dog's details. It takes a few minutes.</p><a class="btn line mag" href="{LOGIN}">Register your dog <i></i></a></li>
+    <li class="st3"><img src="/img/d3.webp" alt="" loading="lazy"><b>3</b><h3>Book daycare or a hotel stay</h3><p>Once registered, book the days and nights you need online, any time.</p><a class="btn line mag" href="{LOGIN}">Book a day or a stay <i></i></a></li>
+  </ol>
 </div></section>
 {faq(HOME_FAQ, [("all","All"),("general","General"),("hotel","Hotel"),("farm","Farm"),("health","Health")])}
 {HOME_CTA}
