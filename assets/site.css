@@ -79,7 +79,7 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{fon
 .runner .dg img.on{opacity:1}.runner .dg img[data-p="sleep"]{height:28px}.runner .dg img[data-p="sit"]{height:48px}
 
 /* home hero */
-.hero{position:relative;height:900vh}
+.hero{position:relative;height:620vh}
 .hstage{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--ink);--H:31vh;--gy:49vh;--cx:50%;--cy:calc(var(--gy) - var(--H)*.56);--r:calc(var(--H)*.5)}
 .hframe{position:absolute;inset:0;overflow:hidden;will-change:transform;transform-origin:50% 60%}
 #gl,.hfall{position:absolute;inset:0;width:100%;height:100%}.hfall{background-size:cover;background-position:center;filter:brightness(.6)}
