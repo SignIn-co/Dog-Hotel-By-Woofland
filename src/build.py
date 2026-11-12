@@ -78,7 +78,8 @@ FOOT = f'''<footer class="foot">
       <div><h5>Woofland</h5><ul><li><a href="/about">Our story</a></li><li><a href="{BOOK}">Booking &amp; pricing</a></li><li><a href="{LOGIN}">Client login</a></li><li><a href="{GMAPS}">Google reviews</a></li><li><a href="https://www.instagram.com/wooflandnz/">Instagram @wooflandnz</a></li></ul></div>
       <div><h5>Visit</h5><ul><li class="sel">137 Wairau Road, Wairau Valley, Auckland 0627</li><li class="sel">0800 147 369</li><li class="sel">info@woofland.co.nz</li><li>Monday to Friday, 7:00 am to 7:00 pm</li><li>Hotel drop-off and pick-up by arrangement</li></ul></div>
     </div>
-    <div class="areas"><b>Woof Van pick-up areas</b><span>North Shore</span><span>Dairy Flat</span><span>Silverdale</span><span>Riverhead</span><span>Kumeu</span><span>Coatesville</span><span>Hobsonville</span><span>Westgate</span><span>Massey</span><span>Ponsonby</span><span>Grey Lynn</span><span>Auckland CBD</span></div>
+    <div class="areas"><b>Woof Van pick-up areas</b><span>North Shore</span><span>Dairy Flat</span><span>Riverhead</span><span>Kumeu</span><span>Coatesville</span><span>Hobsonville</span><span>Westgate</span><span>Massey</span><span>Ponsonby</span><span>Grey Lynn</span></div>
+    <p class="areasnote">Silverdale, Auckland CBD or any surrounding suburb? <a href="#contact">Contact us</a>, we might be able to help.</p>
   </div>
   <div class="gw"><img class="fdog" src="/img/d3.webp" alt="" loading="lazy"><div class="giant" aria-hidden="true">Woofland</div></div>
   <div class="legal"><div class="wrap" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem 2rem;width:100%">
@@ -301,7 +302,7 @@ daycare = phero("Dog Daycare", "Dog Daycare &middot; North Shore, Auckland", '<s
     <div class="price top"><div class="k">Most popular</div><h3>10-session pack</h3><div class="amt">$47<small>per day</small></div><p>$470 in total. Use within 180 days. $55 per day including transport.</p></div>
     <div class="price"><div class="k">Regulars</div><h3>20-session pack</h3><div class="amt">$45<small>per day</small></div><p>$900 in total, or $1,000 including pick-up and drop-off. Our best value.</p></div>
   </div>
-  <div class="note" id="transport"><b>Woof Van pick-up and drop-off.</b> North Shore, Dairy Flat, Silverdale, Riverhead, Kumeu, Coatesville, Hobsonville and Westgate: $25 each way, or $8 per day per dog with a 5 or 10 session package. Huapai, Massey, Ponsonby, Grey Lynn and Auckland CBD: please contact us for fees.</div>
+  <div class="note" id="transport"><b>Woof Van pick-up and drop-off.</b> North Shore, Dairy Flat, Riverhead, Kumeu, Coatesville, Hobsonville and Westgate: $25 each way, or $8 per day per dog with a 5 or 10 session package. Huapai, Massey, Ponsonby and Grey Lynn: please contact us for fees. Silverdale, Auckland CBD or any surrounding suburb: contact us, we might be able to help.</div>
   <div class="note"><b>Late pick-up.</b> Between 7:00 pm and 7:30 pm: $20. After 7:30 pm: charged as an additional night of boarding.</div>
 </div></section>
 <section class="sec" style="padding-top:0"><div class="wrap split">
@@ -339,7 +340,7 @@ hotel = phero("Dog Hotel", "Dog Hotel &middot; Overnight stays in Auckland", '<s
     <p>Our most spacious and private option, with natural daylight and room for dogs from the same family to stay together. Well suited to longer stays.</p>
     <span class="pr">$180<small>per night. $160 for regular daycare dogs.</small></span><span class="inl"><img src="/img/suite.webp" alt="Alpha Suite" loading="lazy"></span></div>
   <div class="note"><b>Regular daycare rate.</b> For dogs who have attended Woofland at least once every fortnight for a minimum of three consecutive months.</div>
-  <div class="note"><b>Hotel transport.</b> Pick-up and drop-off across the North Shore, Dairy Flat, Silverdale, Riverhead, Kumeu, Coatesville, Hobsonville, Westgate, Massey, Ponsonby, Grey Lynn and Auckland CBD. One way $50, return $80.</div>
+  <div class="note"><b>Hotel transport.</b> Pick-up and drop-off across the North Shore, Dairy Flat, Riverhead, Kumeu, Coatesville, Hobsonville, Westgate, Massey, Ponsonby and Grey Lynn. One way $50, return $80. Silverdale, Auckland CBD or any surrounding suburb: contact us, we might be able to help.</div>
 </div></section>
 <div class="rfloat" id="rfloat" aria-hidden="true"><img src="/img/lounge.webp" alt=""><img src="/img/pod.webp" alt=""><img src="/img/suite.webp" alt=""></div>
 ''' + faq([("x","Does someone really stay overnight?","Yes. In the Pack Lounge a caregiver stays and sleeps with the dogs, and staff are present in the building at all times."),
