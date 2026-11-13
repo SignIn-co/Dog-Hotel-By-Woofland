@@ -531,12 +531,11 @@ body{background:radial-gradient(80rem 50rem at 110% -10%,rgba(255,184,28,.10),tr
 /* reviews wall is driven by script so it never freezes */
 .col{animation:none!important}
 /* skip the intro */
-.skip{position:absolute;z-index:6;right:max(var(--gutr),calc(50vw - 660px + 20px));bottom:clamp(1.4rem,4vh,2.4rem);display:inline-flex;align-items:center;gap:.8rem;padding:.5rem 1.2rem .5rem .5rem;border-radius:999px;border:1px solid rgba(255,184,28,.45);background:var(--glass);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);color:var(--cream);text-align:left;font-weight:600;font-size:.95rem;line-height:1.15;transition:opacity .4s,transform .4s var(--ease),border-color .3s}
-.skip:hover{transform:translateY(-3px);border-color:#ffb81c}
-.skip small{display:block;font-size:.68rem;font-weight:500;color:var(--amber);letter-spacing:.04em}
-.skip i{width:2.5rem;height:2.5rem;border-radius:50%;background:linear-gradient(180deg,#ffd04a,#ffb000);position:relative;flex:none}
-.skip i::before,.skip i::after{content:"";position:absolute;left:50%;width:.55rem;height:.55rem;border-right:2px solid #0a0a0a;border-bottom:2px solid #0a0a0a;transform:translateX(-50%) rotate(45deg)}
-.skip i::before{top:.62rem}.skip i::after{top:1.02rem}
+.skip{position:absolute;z-index:6;right:max(var(--gutr),calc(50vw - 660px + 20px));bottom:clamp(1.4rem,4vh,2.4rem);display:flex;flex-direction:column;align-items:flex-end;gap:.5rem;background:none;border:none;padding:0;cursor:pointer;transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.skip small{font-size:.76rem;font-weight:500;color:var(--cream);opacity:.7;letter-spacing:.01em}
+.skip span{display:inline-flex;align-items:center;gap:.55rem;background:var(--amber);color:#0a0a0a;font-weight:700;font-size:.95rem;padding:.7rem 1.3rem;border-radius:999px;transition:background .25s,transform .25s var(--ease)}
+.skip i{width:.5rem;height:.5rem;border-right:2px solid #0a0a0a;border-bottom:2px solid #0a0a0a;transform:rotate(-45deg);flex:none}
+.skip:hover span{background:#ffc94d;transform:translateX(3px)}
 .skip.gone{opacity:0;pointer-events:none;transform:translateY(10px)}
 .hmeta{bottom:clamp(5.4rem,12vh,7rem)}
-@media (max-width:900px){.skip{right:var(--gutr);bottom:2.6rem;padding:.35rem .9rem .35rem .35rem;font-size:.82rem}.skip i{width:2rem;height:2rem}.skip i::before{top:.45rem}.skip i::after{top:.8rem}.skip small{display:none}.hmeta{bottom:3.6rem}}
+@media (max-width:900px){.skip{right:var(--gutr);bottom:2.6rem}.skip small{display:none}.skip span{font-size:.85rem;padding:.6rem 1.1rem}.hmeta{bottom:3.6rem}}
