@@ -396,7 +396,7 @@ body{background:radial-gradient(90rem 60rem at 110% -10%,rgba(245,166,35,.13),tr
 /* light theme */
 html[data-theme=light]{--ink:#fdf5e8;--coal:#f7e9d2;--char:#f0ddc0;--cream:#2a160a;--muted:#6b5340;--lead:#4d3524;--line:rgba(70,35,5,.18);--amber:#d97a06;--glass:rgba(255,247,234,.78);color-scheme:light}
 [data-theme=light] body{background:radial-gradient(90rem 60rem at 110% -10%,rgba(245,166,35,.28),transparent 60%),radial-gradient(70rem 50rem at -20% 40%,rgba(255,196,72,.22),transparent 60%),var(--ink)}
-[data-theme=light] .hstage.onphoto,[data-theme=light] .night,[data-theme=light] .ff,[data-theme=light] .menu,[data-theme=light] .loader,[data-theme=light] .foot{color:#fbf1e2;--cream:#fbf1e2;--muted:#cdc6ba;--lead:#ead8c0;--line:rgba(255,224,180,.15);--amber:#f5a623}
+[data-theme=light] .hstage.onphoto,[data-theme=light] .night,[data-theme=light] .ff,[data-theme=light] .loader,[data-theme=light] .foot{color:#fbf1e2;--cream:#fbf1e2;--muted:#cdc6ba;--lead:#ead8c0;--line:rgba(255,224,180,.15);--amber:#f5a623}
 [data-theme=light] .hill{background:radial-gradient(70% 80% at var(--cx) var(--cy),#ffd58a 0%,#ffe9c4 40%,#fdf5e8 80%)}
 [data-theme=light] .hsun{background:radial-gradient(circle at 34% 28%,#4a230c 0%,#2c150a 70%);box-shadow:0 0 0 1px rgba(80,40,10,.3),0 30px 120px rgba(232,130,12,.4)}
 [data-theme=light] .hring{border-color:rgba(120,60,10,.3);border-left-color:transparent;border-bottom-color:transparent}
@@ -541,3 +541,4 @@ body{background:radial-gradient(80rem 50rem at 110% -10%,rgba(255,184,28,.10),tr
 @media (max-width:900px){.skip{right:var(--gutr);bottom:2.6rem}.skip small{display:none}.skip span{font-size:.85rem;padding:.6rem 1.1rem}.hmeta{bottom:3.6rem}}
 
 @supports (height:1svh){.hstage{--H:31svh;--gy:49svh}@media (max-width:900px){.hstage{--H:23svh;--gy:40svh}}}
+[data-theme=light] .rv q{color:#3a2a1c}[data-theme=light] .rv .by{color:#6b5a48}[data-theme=light] .menu nav a{color:#1a120b}[data-theme=light] .menu nav a.sub{color:#7a6a58}[data-theme=light] .menu .mfoot p{color:#6b5a48}
