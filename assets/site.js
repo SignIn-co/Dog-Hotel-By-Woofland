@@ -135,9 +135,10 @@ if(gw){var txt=gw.textContent;gw.textContent='';var letters=txt.split('').map(fu
 
 /* measure */
 var pars=$$('[data-par]'),M={},ctaWord=$('#ctaWord'),giant=$('.foot .giant'),bgw=$('.phero .bgw'),bigs=$$('.big');
-function measure(){S.vh=innerHeight;S.vw=innerWidth;if(htrack){htrack._S=0;hstory._H=0;hstory._lead=innerWidth<900?.1:.25}
+var lastW=0,lastH=0;function onResize(){var w=innerWidth,h=innerHeight;if(!fine&&w===lastW&&Math.abs(h-lastH)<lastH*.3)return;measure()}
+function measure(){lastW=innerWidth;lastH=innerHeight;S.vh=innerHeight;S.vw=innerWidth;if(htrack){htrack._S=0;hstory._H=0;hstory._lead=innerWidth<900?.1:.25}
   if(reel){reel.style.height=(S.vw<900?panels.length*75+25:panels.length*85+30)+'vh';}
-  if(hero)M.hero={t:top(hero),h:hero.offsetHeight};
+  if(hero)M.hero={t:top(hero),h:hero.offsetHeight,s:hstage.offsetHeight||innerHeight};
   if(reel)M.reel={t:top(reel),h:reel.offsetHeight,w:rtrack.scrollWidth};
   if(qEl)M.q={t:top(qEl),h:qEl.offsetHeight};
   M.par=pars.map(function(p){var b=p.closest('[data-parbox]')||p.parentNode;return {t:top(b),h:b.offsetHeight,k:+p.dataset.par}});
@@ -147,7 +148,7 @@ function measure(){S.vh=innerHeight;S.vw=innerWidth;if(htrack){htrack._S=0;hstor
   M.doc=Math.max(1,root.scrollHeight-S.vh);sizeGL()}
 
 /* loop */
-var navY=0,T0=performance.now();
+var navY=0,T0=performance.now(),HP=-1,lastNow=T0;
 function frame(now){requestAnimationFrame(frame);
   var t=(now-T0)/1000;S.y=window.scrollY||0;S.sy=reduce?S.y:lerp(S.sy,S.y,.11);if(Math.abs(S.y-S.sy)<.05)S.sy=S.y;
   S.svel=lerp(S.svel,clamp((S.y-S.sy)/120,-1.5,1.5),.2);var vh=S.vh,vw=S.vw;
@@ -155,8 +156,9 @@ function frame(now){requestAnimationFrame(frame);
   mouse.x=lerp(mouse.x,mouse.tx,.05);mouse.y=lerp(mouse.y,mouse.ty,.05);
   if(fine&&cur)cur.style.transform='translate3d('+mouse.px+'px,'+mouse.py+'px,0)';
 
+  var fdt=now-lastNow;lastNow=now;if(hero&&M.hero&&S.sy>=M.hero.t+M.hero.h)HP=-1;
   if(hero&&M.hero&&S.sy<M.hero.t+M.hero.h){
-    var hp=clamp((S.sy-M.hero.t)/(M.hero.h-vh)),P=seg(.46,.6,hp)+seg(.72,.86,hp),idx=P>=1?1:0,f=P-idx;if(P>=2){idx=1;f=1}
+    var hpT=clamp((S.sy-M.hero.t)/(M.hero.h-M.hero.s)),hp;if(fine||reduce||HP<0)HP=hpT;else{var dt=Math.min(.05,fdt/1000),cap=(HP<.46?.075:.3)*dt,d=hpT-HP;HP+=clamp(d,-cap,cap)}hp=HP;var P=seg(.46,.6,hp)+seg(.72,.86,hp),idx=P>=1?1:0,f=P-idx;if(P>=2){idx=1;f=1}
     var si=P<.3?0:(P>.72&&P<1.3)?1:(P>1.72?2:-1);if(hp>.965)si=-1;setSlide(si);
     if(hill){var hk=clamp(P),he=hk*hk*(3-2*hk),hs=hstage.getBoundingClientRect(),sr=hsun.getBoundingClientRect(),cx=sr.left+sr.width/2-hs.left,cy=sr.top+sr.height/2-hs.top,
       mr=Math.sqrt(Math.pow(Math.max(cx,hs.width-cx),2)+Math.pow(Math.max(cy,hs.height-cy),2))+4;
@@ -244,7 +246,7 @@ if(rst&&reel){var jump=function(d){window.scrollTo({top:(window.scrollY||0)+d,be
   rst.addEventListener('click',function(e){if(tc&&tc.dir===1)e.preventDefault()},true)}
 /* theme */
 var tgl=$('#tgl');if(tgl)tgl.addEventListener('click',function(){var l=root.dataset.theme==='light';if(l)delete root.dataset.theme;else root.dataset.theme='light';try{localStorage.setItem('wf-theme',l?'dark':'light')}catch(e){}});
-measure();window.addEventListener('resize',measure);window.addEventListener('load',measure);setTimeout(measure,1200);setTimeout(measure,3200);
+measure();window.addEventListener('resize',onResize);window.addEventListener('orientationchange',function(){setTimeout(measure,350)});window.addEventListener('load',measure);setTimeout(measure,1200);setTimeout(measure,3200);
 requestAnimationFrame(frame);
 })();
 
