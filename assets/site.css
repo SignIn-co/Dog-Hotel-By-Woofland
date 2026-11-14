@@ -547,3 +547,4 @@ body{background:radial-gradient(80rem 50rem at 110% -10%,rgba(255,184,28,.10),tr
 .menu nav a:nth-child(6){transition-delay:.4s}
 .menu .mfoot .row{flex-wrap:nowrap}.menu .mfoot .btn{flex:1;justify-content:center;padding-left:1rem;padding-right:1rem;font-size:.95rem}
 [data-theme=light] .burger{background:rgba(255,247,234,.78)}
+.hp.hm{width:calc(var(--H)*.8549);translate:-50% 1.7%}.hms{position:absolute;inset:0;background:url(/img/humspr.webp) 0 0/1000% 300% no-repeat}

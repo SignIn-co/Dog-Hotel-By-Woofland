@@ -181,7 +181,11 @@ function frame(now){requestAnimationFrame(frame);
       if(fr!==hst.fr){hst.fr=fr;hspr.style.backgroundPosition=((fr%8)/7*100).toFixed(2)+'% '+(Math.floor(fr/8)/4*100).toFixed(2)+'%'}
       if(ps!==hpose){hpose=ps;hspr.style.opacity=ps==='sleep'?0:1;hslp.style.opacity=ps==='sleep'?1:0}
       hdog.style.transform='translate3d('+(dX*Sp).toFixed(1)+'px,'+dY.toFixed(1)+'px,0)';
-      var hb=function(x){return 'translate3d('+(x*Sp).toFixed(1)+'px,'+(-Math.abs(Math.sin(x*16))*Hh*.016).toFixed(1)+'px,0)'};
+      var hb=function(x){return 'translate3d('+(x*Sp).toFixed(1)+'px,0,0)'};
+      if(!hst.ms){hst.ms=[$('#hE .hms'),$('#hM .hms'),$('#hT .hms')];hst.mf=[-1,-1,-1]}
+      var hcy=cyc*1.6,wk=function(x,n){return ((Math.floor(x/hcy*n)%n)+n)%n},tw=[0,1,8,9],tf,tq0=seg(.645,.69,st);
+      tf=st<.645?tw[wk(dX,4)]:st<.69?Math.min(7,2+Math.floor(tq0*6)):st<.72?7:tw[wk(dX,4)];
+      var mfr=[wk(dX,9),wk(dX,9),tf];for(var hi=0;hi<3;hi++){if(mfr[hi]!==hst.mf[hi]){hst.mf[hi]=mfr[hi];hst.ms[hi].style.backgroundPositionX=(mfr[hi]/9*100).toFixed(2)+'%'}}
       hst.E.style.transform=hb(eX);hst.M.style.transform=hb(mX);hst.T.style.transform=hb(tX);hst.C.style.transform='translate3d('+(cX*Sp).toFixed(1)+'px,0,0)';
       var mxo=sitting?Hh*.2:Hh*.31,myo=(sitting?-Hh*.45:ps==='run'?-Hh*.37:-Hh*.385)+dY;
       /* bone */
@@ -199,7 +203,7 @@ function frame(now){requestAnimationFrame(frame);
       /* ball */
       var tq=seg(.671,.765,st),thx=tX*Sp+Hh*.36,thy=-Hh*.74,bxx,byy;
       if(st<.671){bxx=thx;byy=thy}else if(st<.765){var t0x=(3.752+.15*4.12)*Sp+Hh*.36,cxb=5.32*Sp+mxo;bxx=t0x+(cxb-t0x)*tq;byy=thy+(-Hh*.36-thy)*tq-Math.sin(tq*Math.PI)*Hh*.55}else{bxx=dX*Sp+mxo;byy=myo}
-      hst.ball.style.opacity=st>=.93?0:1;hst.ball.style.transform='translate3d('+bxx.toFixed(1)+'px,'+byy.toFixed(1)+'px,0)';}
+      hst.ball.style.opacity=st>=.93||st<.668?0:1;hst.ball.style.transform='translate3d('+bxx.toFixed(1)+'px,'+byy.toFixed(1)+'px,0)';}
     var k=seg(.9,1,hp);hframe.style.transform='scale('+(1-k*.08).toFixed(4)+')';hframe.style.borderRadius=(k*34).toFixed(1)+'px';
     if(glok&&tex[0]&&started){var ia=tex[idx]?idx:0,ib=tex[idx+1]?idx+1:ia;
       gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,tex[ia]);gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,tex[ib]);
