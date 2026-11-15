@@ -1,3 +1,4 @@
+import re
 import os, html
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BOOK = "https://www.woofland.co.nz/booking-pricing"
@@ -21,8 +22,9 @@ def head(title, desc, path):
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0a0a0a">
-<script>try{{var t=localStorage.getItem("wf-theme");if(t==="light")document.documentElement.dataset.theme="light"}}catch(e){{}}</script>
+<script>try{{var t=localStorage.getItem("wf-theme");if(t==="light"){{document.documentElement.dataset.theme="light";document.querySelector('meta[name="color-scheme"]').content="light";document.querySelector('meta[name="theme-color"]').content="#fdf5e8"}}}}catch(e){{}}</script>
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
@@ -43,7 +45,7 @@ def chrome(path):
   <div class="right"><button class="tgl" id="tgl" aria-label="Switch between dark and light" title="Dark / light"><i></i></button><a class="login" href="{LOGIN}">Client Login</a>{btn("Book Free Trial")}
     <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button></div>
 </header>
-<div class="menu" id="menu">
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Site menu">
   <nav aria-label="Menu">
     <a href="/"><small>01</small>Home</a>
     <a href="/dog-daycare"><small>02</small>Dog Daycare</a>
@@ -112,10 +114,55 @@ def img_tag(key, alt, eager=False):
     src = key if key.startswith("/") else M(key)
     return f'<img data-par="14" src="{src}" alt="{html.escape(alt)}"{"" if eager else " loading=\"lazy\""}>'
 
+_DIM = {}
+def _dims(src):
+    if src in _DIM: return _DIM[src]
+    d = None
+    try:
+        from PIL import Image
+        if src.startswith("/img/"):
+            d = Image.open(os.path.join(OUT, src[1:])).size
+        elif src.startswith("/media/") and src[7:] not in ("couch", "walk"):
+            d = Image.open(os.path.join(OUT, "media", src[7:])).size
+    except Exception:
+        d = None
+    _DIM[src] = d
+    return d
+
+def enhance(doc):
+    """Image loading per Chrome guidance: intrinsic sizes, phone-size variants, lazy below the first section, high priority for the first photo."""
+    first_end = doc.find("</section>")
+    out, pos, hero_done = [], 0, False
+    for m in re.finditer(r"<img\b[^>]*>", doc):
+        tag = m.group(0)
+        src = re.search(r'src="([^"]+)"', tag)
+        src = src.group(1) if src else ""
+        new = tag
+        d = _dims(src)
+        if d and d[0] >= 800 and not src.split("/")[-1].startswith(("d", "logo")) and " width=" not in tag:
+            new = new.replace("<img", f'<img width="{d[0]}" height="{d[1]}"', 1)
+        if src.startswith("/img/") and os.path.exists(os.path.join(OUT, src[1:-5] + "-m.webp")) and "srcset" not in tag:
+            new = new.replace("<img", f'<img srcset="{src[:-5]}-m.webp 1080w, {src} {d[0]}w" sizes="(max-width:900px) 100vw, 60vw"', 1)
+        before = m.start() < first_end
+        is_photo = d and d[0] >= 800 and src.startswith(("/img/", "/media/")) and "d" not in src.rsplit("/", 1)[-1][:1]
+        if before and is_photo and not hero_done:
+            hero_done = True
+            new = new.replace(' loading="lazy"', "")
+            if "fetchpriority" not in new: new = new.replace("<img", '<img fetchpriority="high"', 1)
+        elif not before and "loading=" not in new and "fetchpriority" not in new:
+            new = new.replace("<img", '<img loading="lazy"', 1)
+        if "decoding=" not in new: new = new.replace("<img", '<img decoding="async"', 1)
+        out.append(doc[pos:m.start()]); out.append(new); pos = m.end()
+    out.append(doc[pos:])
+    return "".join(out)
+
 def page(name, title, desc, body):
     path = "/" if name == "index" else "/" + name
+    doc = head(title, desc, path) + chrome(path) + "<main>" + body + "</main>" + FOOT
+    if name == "index":
+        doc = doc.replace('<link rel="stylesheet" href="/assets/site.css">', '<link rel="preload" as="image" href="/img/hero2.webp" fetchpriority="high">\n<link rel="stylesheet" href="/assets/site.css">', 1)
     with open(os.path.join(OUT, name + ".html"), "w") as f:
-        f.write(head(title, desc, path) + chrome(path) + "<main>" + body + "</main>" + FOOT)
+        f.write(enhance(doc))
 
 # ---------------- HOME ----------------
 HOME_FAQ = [
@@ -272,7 +319,7 @@ home = f'''
 
 <section class="sec rev" id="reviews" aria-label="Reviews"><div class="ghost5" aria-hidden="true">5.0</div><div class="wrap">
   <div class="head"><div><div class="eyebrow">In their words</div><h2 class="display h2" style="margin-top:1rem">Loved by dogs. <span class="it">Reviewed by humans.</span></h2></div>
-    <a class="btn line mag" href="{GMAPS}">All 123 Google reviews <i></i></a></div>
+    <div class="revact"><a class="btn line mag" href="{GMAPS}">All 123 Google reviews <i></i></a><button class="wpause" id="wpause" type="button" aria-pressed="false"><i></i><span>Pause reviews</span></button></div></div>
   <div class="wall">{WALL}</div>
 </div></section>
 
