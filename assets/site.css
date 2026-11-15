@@ -551,7 +551,7 @@ body{background:radial-gradient(80rem 50rem at 110% -10%,rgba(255,184,28,.10),tr
 .menu nav a:nth-child(6){transition-delay:.4s}
 .menu .mfoot .row{flex-wrap:nowrap}.menu .mfoot .btn{flex:1;justify-content:center;padding-left:1rem;padding-right:1rem;font-size:.95rem}
 [data-theme=light] .burger{background:rgba(255,247,234,.78)}
-.hp.hm{width:calc(var(--H)*.8549);translate:-50% 1.7%}.hms{position:absolute;inset:0;background:url(/img/humspr.webp) 0 0/1000% 300% no-repeat}
+.hp.hm{width:calc(var(--H)*.8566);translate:-50% 1.7%}.hms{position:absolute;inset:0;background:url(/img/humspr.webp) 0 0/1000% 300% no-repeat}
 .wallw{position:relative}.revact{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}.wpause{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .9rem;border-radius:999px;border:1px solid var(--line);background:var(--glass);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--cream);font-size:.82rem;font-weight:500;cursor:pointer}
 .wpause i{position:relative;width:.7rem;height:.75rem;flex:none}.wpause i::before,.wpause i::after{content:"";position:absolute;top:0;width:.22rem;height:100%;background:var(--amber);border-radius:1px}.wpause i::before{left:0}.wpause i::after{right:0}
 .wpause.on i::before{width:0;height:0;background:none;border-style:solid;border-width:.375rem 0 .375rem .65rem;border-color:transparent transparent transparent var(--amber);border-radius:0}.wpause.on i::after{display:none}
@@ -561,3 +561,4 @@ body{background:radial-gradient(80rem 50rem at 110% -10%,rgba(255,184,28,.10),tr
 .nav{view-transition-name:site-nav}.runner{view-transition-name:site-runner}
 ::view-transition-group(site-nav),::view-transition-group(site-runner){animation:none}}
 .menu:focus{outline:none}
+@media (max-width:900px){.hms{background-image:url(/img/humspr-m.webp)}}
