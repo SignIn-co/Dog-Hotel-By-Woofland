@@ -173,7 +173,7 @@ function frame(now){requestAnimationFrame(frame);
 
   var fdt=now-lastNow;lastNow=now;if(hero&&M.hero&&S.sy>=M.hero.t+M.hero.h)HP=-1;
   if(hero&&M.hero&&S.sy<M.hero.t+M.hero.h){
-    var hpT=clamp((S.sy-M.hero.t)/(M.hero.h-M.hero.s)),hp;if(fine||reduce||HP<0)HP=hpT;else{var dt=Math.min(.05,fdt/1000),cap=(HP<.46?.075:.3)*dt,d=hpT-HP;HP+=clamp(d,-cap,cap)}hp=HP;var P=seg(.46,.6,hp)+seg(.72,.86,hp),idx=P>=1?1:0,f=P-idx;if(P>=2){idx=1;f=1}
+    var hpT=clamp((S.sy-M.hero.t)/(M.hero.h-M.hero.s)),hp;if(fine||reduce||HP<0)HP=hpT;else{var dt=Math.max(0,Math.min(.05,fdt/1000)),cap=(HP<.46?.075:.3)*dt,d=hpT-HP;HP+=clamp(d,-cap,cap)}hp=HP;var P=seg(.46,.6,hp)+seg(.72,.86,hp),idx=P>=1?1:0,f=P-idx;if(P>=2){idx=1;f=1}
     var si=P<.3?0:(P>.72&&P<1.3)?1:(P>1.72?2:-1);if(hp>.965)si=-1;setSlide(si);
     if(hill){var hk=clamp(P),he=hk*hk*(3-2*hk),hs=hstage.getBoundingClientRect(),sr=hsun.getBoundingClientRect(),cx=sr.left+sr.width/2-hs.left,cy=sr.top+sr.height/2-hs.top,
       mr=Math.sqrt(Math.pow(Math.max(cx,hs.width-cx),2)+Math.pow(Math.max(cy,hs.height-cy),2))+4;
@@ -185,9 +185,9 @@ function frame(now){requestAnimationFrame(frame);
       var dX=kf([[0,0],[.087,.72],[.141,.72],[.322,2.22],[.383,2.22],[.503,3.22],[.564,3.22],[.671,4.12],[.765,5.32],[.866,6.12],[.946,6.5]],st),cX=6.5,
           eX=.75+.15*dX,mX=dX<2.22?1.687+.15*dX:dX<=3.22?dX-.2:3.02+.15*(dX-3.22),tX=3.752+.15*dX,
           cam=dX+hstory._lead,camE=seg(.9,.99,st);cam=cam+(cX-cam)*camE*camE*(3-2*camE);
-      var cyc=.56*Hh/Sp,gdt=Math.min(.05,fdt/1000),gdx=hst.pdX==null?0:Math.abs(dX-hst.pdX);hst.pdX=dX;
+      var cyc=.56*Hh/Sp,gdt=Math.max(0,Math.min(.05,fdt/1000)),gdx=hst.pdX==null?0:Math.abs(dX-hst.pdX);hst.pdX=dX;
       hst.wph=(hst.wph||0)+Math.min(gdx/cyc,gdt*1.7);hst.rph=(hst.rph||0)+Math.min(gdx/(cyc*1.5),gdt*2.3);hst.hph=(hst.hph||0)+Math.min(gdx/(cyc*1.6),gdt*1.1);
-      var wf=Math.floor(hst.wph*8)%8,rnf=9+Math.floor(hst.rph*6)%6,fr,ps,
+      var wf=(Math.floor(hst.wph*8)%8+8)%8,rnf=9+(Math.floor(hst.rph*6)%6+6)%6,fr,ps,
           sitf=function(a,b){var q=seg(a,b,st);return q<.3?22+Math.min(5,Math.floor(q/.3*6)):q<.72?27:28+Math.min(5,Math.floor((q-.72)/.28*6))};
       if(st<.087){ps='walk';fr=wf}else if(st<.141){ps='sniff';fr=16+Math.min(5,Math.floor(seg(.087,.141,st)*6))}else if(st<.32){ps='walk';fr=wf}
       else if(st<.385){ps='sit';fr=sitf(.32,.385)}else if(st<.501){ps='walk';fr=wf}else if(st<.566){ps='sit';fr=sitf(.501,.566)}
@@ -200,7 +200,7 @@ function frame(now){requestAnimationFrame(frame);
       hdog.style.transform='translate3d('+(dX*Sp).toFixed(1)+'px,'+dY.toFixed(1)+'px,0)';
       var hb=function(x){return 'translate3d('+(x*Sp).toFixed(1)+'px,0,0)'};
       if(!hst.ms){hst.ms=[$('#hE .hms'),$('#hM .hms'),$('#hT .hms')];hst.mf=[-1,-1,-1]}
-      var wk=function(x,n){return Math.floor(hst.hph*n)%n},tw=[0,1,8,9],tf,tq0=seg(.645,.69,st);
+      var wk=function(x,n){return (Math.floor(hst.hph*n)%n+n)%n},tw=[0,1,8,9],tf,tq0=seg(.645,.69,st);
       tf=st<.645?tw[wk(dX,4)]:st<.69?Math.min(7,2+Math.floor(tq0*6)):st<.72?7:tw[wk(dX,4)];
       var mfr=[wk(dX,9),wk(dX,9),tf];for(var hi=0;hi<3;hi++){if(mfr[hi]!==hst.mf[hi]){hst.mf[hi]=mfr[hi];hst.ms[hi].style.backgroundPositionX=(mfr[hi]/9*100).toFixed(2)+'%'}}
       hst.E.style.transform=hb(eX);hst.M.style.transform=hb(mX);hst.T.style.transform=hb(tX);hst.C.style.transform='translate3d('+(cX*Sp).toFixed(1)+'px,0,0)';
