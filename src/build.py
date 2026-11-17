@@ -223,7 +223,7 @@ home = f'''
       <div class="eyebrow" data-fade>Premium Dog Daycare and Hotel &middot; North Shore, Auckland</div>
       <h1 class="display"><span class="ln"><span>Where dogs</span></span><span class="ln"><span>are <span class="it">dogs.</span></span></span></h1>
       <p class="lead" data-fade data-d="1">Spacious, supervised dog care where dogs are free to be dogs.</p>
-      <p class="proof" data-fade data-d="1"><span>From <b>$45</b> a day</span><i></i><span><span class="pst" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <b data-gr="rating">5.0</b> from <a href="{GMAPS}"><span data-gr="count">123</span> Google reviews</a></span><i></i><span>A caregiver sleeps with the dogs every night</span></p>
+      <p class="proof" data-fade data-d="1"><span>From <b>$45</b> a day</span><i></i><span><span class="pst" aria-hidden="true">&#9733;</span> <b data-gr="rating">5.0</b> on Google <a href="{GMAPS}">(<span data-gr="count">125</span> reviews)</a></span><i></i><span>A caregiver sleeps with the dogs every night</span></p>
       <div class="row" data-fade data-d="2">{btn("Book Free Trial")}<a class="btn line mag" href="#services">Explore Woofland <i></i></a></div>
     </div></div>
     <div class="hslide" data-s="1"><div class="wrap">
@@ -310,7 +310,7 @@ home = f'''
   <div class="bento">
     <div class="cell c-rate" data-in><div><div class="k">Google rating</div></div>
       <div><div class="n"><span data-count="5.0" data-dec="1">5.0</span></div><div class="stars5" style="margin:1.2rem 0 .8rem">{S5}</div>
-      <p style="font-size:1.05rem;color:var(--cream)">From <b><span data-count="123">123</span> Google reviews</b> by local dog owners.</p></div></div>
+      <p style="font-size:1.05rem;color:var(--cream)">From <b><span data-count="125" data-gr="count">125</span> Google reviews</b> by local dog owners.</p></div></div>
     <div class="cell c-a"><div class="k">Vet-founded</div><div><h3>Care led by experience.</h3><p>Founder Ryan holds a veterinary degree and has spent over five years in New Zealand's animal health industry.</p></div></div>
     <div class="cell c-b"><div class="k">No cages</div><div><h3>Cage-free. Crate-free.</h3><p>Purpose-built spaces, never confinement.</p></div><img class="dogi" src="/img/d10.webp" alt="" loading="lazy"></div>
     <div class="cell c-c"><div class="k">Assessed first</div><div><h3>Every dog is met properly.</h3><p>A free trial before any dog joins group play.</p></div></div>
@@ -320,7 +320,7 @@ home = f'''
 
 <section class="sec rev" id="reviews" aria-label="Reviews"><div class="ghost5" aria-hidden="true">5.0</div><div class="wrap">
   <div class="head"><div><div class="eyebrow">In their words</div><h2 class="display h2" style="margin-top:1rem">Loved by dogs. <span class="it">Reviewed by humans.</span></h2></div>
-    <div class="revact"><a class="btn line mag" href="{GMAPS}">All 123 Google reviews <i></i></a><button class="wpause" id="wpause" type="button" aria-pressed="false"><i></i><span>Pause reviews</span></button></div></div>
+    <div class="revact"><a class="btn line mag" href="{GMAPS}">All <span data-gr="count">125</span> Google reviews <i></i></a><button class="wpause" id="wpause" type="button" aria-pressed="false"><i></i><span>Pause reviews</span></button></div></div>
   <div class="wall">{WALL}</div>
 </div></section>
 
