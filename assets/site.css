@@ -562,3 +562,8 @@ body{background:radial-gradient(80rem 50rem at 110% -10%,rgba(255,184,28,.10),tr
 ::view-transition-group(site-nav),::view-transition-group(site-runner){animation:none}}
 .menu:focus{outline:none}
 @media (max-width:900px){.hms{background-image:url(/img/humspr-m.webp)}}
+.proof{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem .9rem;margin:-.4rem 0 1.4rem;font-size:.95rem;color:var(--cream);max-width:44rem}
+.proof b{font-weight:700;color:var(--amber)}.proof a{border-bottom:1px solid rgba(255,184,28,.45)}.proof .pst{color:var(--amber);letter-spacing:.06em}
+.proof i{width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.4}
+@media (min-width:901px){.proof{max-width:none;flex-wrap:nowrap;white-space:nowrap}}
+@media (max-width:900px){.proof{font-size:.84rem;gap:.3rem .6rem;margin-bottom:1.1rem}.proof .pst{display:none}.proof i:nth-of-type(2){display:none}.proof>span:last-child{flex-basis:100%}}

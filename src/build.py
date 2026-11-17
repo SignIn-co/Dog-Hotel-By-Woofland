@@ -223,6 +223,7 @@ home = f'''
       <div class="eyebrow" data-fade>Premium Dog Daycare and Hotel &middot; North Shore, Auckland</div>
       <h1 class="display"><span class="ln"><span>Where dogs</span></span><span class="ln"><span>are <span class="it">dogs.</span></span></span></h1>
       <p class="lead" data-fade data-d="1">Spacious, supervised dog care where dogs are free to be dogs.</p>
+      <p class="proof" data-fade data-d="1"><span>From <b>$45</b> a day</span><i></i><span><span class="pst" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <b data-gr="rating">5.0</b> from <a href="{GMAPS}"><span data-gr="count">123</span> Google reviews</a></span><i></i><span>A caregiver sleeps with the dogs every night</span></p>
       <div class="row" data-fade data-d="2">{btn("Book Free Trial")}<a class="btn line mag" href="#services">Explore Woofland <i></i></a></div>
     </div></div>
     <div class="hslide" data-s="1"><div class="wrap">
@@ -260,7 +261,7 @@ home = f'''
           <span class="ff back"><img class="pic" src="/img/space.webp" alt="A Woofland team member with dogs on the daycare floor"><span class="fhint"><i></i>Tap to flip back</span></span></span></button>
         <div class="txt"><h3 class="display">Dog <span class="it">Daycare</span></h3><p class="sub">Days designed around your dog.</p>
           <p>Designed for movement, balance and positive social play. Structured activities, rest time and supervised interaction in a safe, calm, cage-free environment.</p>
-          <div class="tags"><span>From $47 a day</span><span>7am to 7pm, Mon to Fri</span><span>Small playgroups</span></div>
+          <div class="tags"><span>From $45 a day</span><span>7am to 7pm, Mon to Fri</span><span>Small playgroups</span></div>
           <div>{btn("Explore Daycare", "/dog-daycare")}</div></div>
       </article>
       <article class="panel">
@@ -353,11 +354,11 @@ daycare = phero("Dog Daycare", "Dog Daycare &middot; North Shore, Auckland", '<s
   <div class="eyebrow">Daycare options</div><h2 class="display h2" style="margin-top:1rem">Simple, <span class="it">flexible</span> pricing.</h2>
   <div class="prices">
     <div class="price"><div class="k">One-off</div><h3>Single day</h3><div class="amt">$55<small>per day</small></div><p>A full day of supervised play, socialising and rest.</p></div>
-    <div class="price"><div class="k">5 sessions</div><h3>5-session pack</h3><div class="amt">$52<small>per day</small></div><p>$260 in total. Valid for 90 days. $60 per day including transport.</p></div>
-    <div class="price top"><div class="k">Most popular</div><h3>10-session pack</h3><div class="amt">$47<small>per day</small></div><p>$470 in total. Use within 180 days. $55 per day including transport.</p></div>
-    <div class="price"><div class="k">Regulars</div><h3>20-session pack</h3><div class="amt">$45<small>per day</small></div><p>$900 in total, or $1,000 including pick-up and drop-off. Our best value.</p></div>
+    <div class="price"><div class="k">5 sessions</div><h3>5-session pack</h3><div class="amt">$52<small>per day</small></div><p>$260 in total. Valid for 90 days. $315 including transport ($63 per day).</p></div>
+    <div class="price top"><div class="k">Most popular</div><h3>10-session pack</h3><div class="amt">$47<small>per day</small></div><p>$470 in total. Use within 180 days. $580 including transport ($58 per day).</p></div>
+    <div class="price"><div class="k">Regulars</div><h3>20-session pack</h3><div class="amt">$45<small>per day</small></div><p>$900 in total, or $1,060 including pick-up and drop-off ($53 per day). Our best value.</p></div>
   </div>
-  <div class="note" id="transport"><b>Woof Van pick-up and drop-off.</b> North Shore, Dairy Flat, Riverhead, Kumeu, Coatesville, Hobsonville and Westgate: $25 each way, or $8 per day per dog with a 5 or 10 session package. Huapai, Massey, Ponsonby and Grey Lynn: please contact us for fees. Silverdale, Auckland CBD or any surrounding suburb: contact us, we might be able to help.</div>
+  <div class="note" id="transport"><b>Woof Van pick-up and drop-off.</b> North Shore, Dairy Flat, Riverhead, Kumeu, Coatesville, Hobsonville and Westgate: $25 each way, or included in a session pack with transport. Huapai, Massey, Ponsonby and Grey Lynn: please contact us for fees. Silverdale, Auckland CBD or any surrounding suburb: contact us, we might be able to help.</div>
   <div class="note"><b>Late pick-up.</b> Between 7:00 pm and 7:30 pm: $20. After 7:30 pm: charged as an additional night of boarding.</div>
 </div></section>
 <section class="sec" style="padding-top:0"><div class="wrap split">
@@ -371,7 +372,7 @@ daycare = phero("Dog Daycare", "Dog Daycare &middot; North Shore, Auckland", '<s
  ("x","What are your hours?","7:00 am to 7:00 pm, Monday to Friday."),
  ("x","How do you group the dogs?","By energy level and temperament, so every dog has a safe and positive day."),
  ("x","Which vaccinations are required?","Core vaccinations, including kennel cough, must be up to date.")]) + cta()
-page("dog-daycare", "Dog Daycare North Shore Auckland | Woofland", "Cage-free, fully supervised dog daycare on Auckland's North Shore. From $47 a day, with Woof Van pick-up and drop-off.", daycare)
+page("dog-daycare", "Dog Daycare North Shore Auckland | Woofland", "Cage-free, fully supervised dog daycare on Auckland's North Shore. From $45 a day, with Woof Van pick-up and drop-off.", daycare)
 
 # ---------------- HOTEL ----------------
 hotel = phero("Dog Hotel", "Dog Hotel &middot; Overnight stays in Auckland", '<span class="ln"><span>Someone is</span></span><span class="ln"><span>always <span class="it">home.</span></span></span>',
