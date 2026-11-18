@@ -169,7 +169,7 @@ HOME_FAQ = [
  ("general", "Are all dog breeds welcome at Woofland?", "Absolutely. We welcome all breeds, as long as they are friendly, social and up to date with their vaccinations. Each dog is assessed before joining group play."),
  ("general", "What are your opening hours?", "Our standard hours are 7:00 am to 7:00 pm, Monday to Friday. Hotel drop-offs and pick-ups are available by arrangement."),
  ("general", "How do you handle dogs with different personalities?", "We group dogs by energy level and temperament, so everyone enjoys a safe and positive experience."),
- ("hotel", "Do you provide overnight care?", "Yes. We offer both home-like stays and private pods. In the Pack Lounge, a caregiver stays and sleeps with the dogs overnight."),
+ ("hotel", "Do you provide overnight care?", "Yes. We offer both home-like stays and private pods. In our home-like lounge, a caregiver stays and sleeps with the dogs overnight."),
  ("hotel", "What should I bring for my dog's stay?", "Please bring their bed, food, favourite toy and any necessary medication, so they feel comfortable and at home."),
  ("farm", "Can my dog join the Farm Adventure from Wairau?", "Yes. Dogs attending daycare at Wairau travel to the farm in the Woof Van when Farm Adventure is booked in advance."),
  ("health", "Which vaccinations does my dog need?", "Your dog must be up to date with core vaccinations, including kennel cough, to attend Woofland."),
@@ -265,11 +265,11 @@ home = f'''
           <div>{btn("Explore Daycare", "/dog-daycare")}</div></div>
       </article>
       <article class="panel">
-        <button class="ph flip" type="button" aria-pressed="false" aria-label="Dog Hotel. Flip the card to see the Pack Lounge"><span class="fin">
+        <button class="ph flip" type="button" aria-pressed="false" aria-label="Dog Hotel. Flip the card to see the home-like lounge"><span class="fin">
           <span class="ff front night2"><span class="fsun"></span><img class="fart wide" src="/img/d6.webp" alt=""><span class="fhint"><i></i>Tap to see the real thing</span></span>
-          <span class="ff back"><img class="pic" src="/img/lounge.webp" alt="The Pack Lounge at the Woofland Dog Hotel"><span class="fhint"><i></i>Tap to flip back</span></span></span></button>
+          <span class="ff back"><img class="pic" src="/img/lounge.webp" alt="The home-like lounge at the Woofland Dog Hotel"><span class="fhint"><i></i>Tap to flip back</span></span></span></button>
         <div class="txt"><h3 class="display">Dog <span class="it">Hotel</span></h3><p class="sub">Someone sleeps beside them, every night.</p>
-          <p>Home-like overnight stays with plenty of human interaction. In the Pack Lounge a caregiver stays and sleeps with the dogs, with private pods for dogs who enjoy their own space.</p>
+          <p>Home-like overnight stays with plenty of human interaction. In our home-like lounge a caregiver stays and sleeps with the dogs, with private pods for dogs who enjoy their own space.</p>
           <div class="tags"><span>From $63 a night</span><span>Staff on site day and night</span><span>Cage-free</span></div>
           <div>{btn("Explore the Hotel", "/dog-hotel")}</div></div>
       </article>
@@ -291,16 +291,16 @@ home = f'''
   <div class="wrap c" data-in><div class="eyebrow" data-fade>The Woofland difference</div>
     <div class="jlh" data-fade>Just like home.</div>
     <h2>While you sleep, someone sleeps <em class="it" style="font-style:normal">beside them.</em></h2>
-    <div class="cols"><p class="lead" data-fade data-d="1">Most kennels go dark at closing time. At Woofland Dog Hotel a team member stays the night in the Pack Lounge, so it feels just like home, with a familiar human always within reach.</p>
+    <div class="cols"><p class="lead" data-fade data-d="1">Most kennels go dark at closing time. At Woofland Dog Hotel a team member stays the night in the home-like lounge, so it feels just like home, with a familiar human always within reach.</p>
       <div class="time" data-fade data-d="2">Present, day and night.</div></div></div>
 </section>
 
 <section class="sec" id="hotel" aria-label="Dog Hotel rooms"><div class="wrap">
   <div class="svc-head" data-in><div><div class="eyebrow">Dog Hotel by Woofland</div><h2 class="display h2" style="margin-top:1rem"><span class="ln"><span>Three ways</span></span><span class="ln"><span>to <span class="it">stay.</span></span></span></h2></div>
     <p data-fade>Different dogs rest differently. We match the room and routine to temperament, social comfort and wellbeing.</p></div>
-  <a class="room" data-room="0" href="/dog-hotel"><span class="n">01</span><h3 class="display">Pack Lounge</h3><p>A home-style lounge for social dogs, with a caregiver sleeping in the room overnight.</p><span class="pr">$80&ndash;$90<small>per night</small></span><span class="inl"><img src="/img/lounge.webp" alt="Pack Lounge" loading="lazy"></span></a>
-  <a class="room" data-room="1" href="/dog-hotel"><span class="n">02</span><h3 class="display">Paw Pod</h3><p>A private enclosed pod for dogs who prefer their own calm sleeping space.</p><span class="pr">$63&ndash;$70<small>per night</small></span><span class="inl"><img src="/img/pod.webp" alt="Paw Pod" loading="lazy"></span></a>
-  <a class="room" data-room="2" href="/dog-hotel"><span class="n">03</span><h3 class="display">Alpha Suite</h3><p>A spacious private suite for dogs from the same family.</p><span class="pr">$160&ndash;$180<small>per night</small></span><span class="inl"><img src="/img/suite.webp" alt="Alpha Suite" loading="lazy"></span></a>
+  <a class="room" data-room="0" href="/dog-hotel"><span class="n">01</span><h3 class="display">Home-like Lounge <span class="prem">Premium</span></h3><p><b class="rn">Pack Lounge</b> &middot; a caregiver sleeps in the room</p><span class="pr">$80&ndash;$90<small>per night</small></span><span class="inl"><img src="/img/lounge.webp" alt="Home-like lounge" loading="lazy"></span></a>
+  <a class="room" data-room="1" href="/dog-hotel"><span class="n">02</span><h3 class="display">Private Pod</h3><p><b class="rn">Paw Pod</b> &middot; for dogs who rest best alone, with someone checking on them through the night</p><span class="pr">$63&ndash;$70<small>per night</small></span><span class="inl"><img src="/img/pod.webp" alt="Private pod" loading="lazy"></span></a>
+  <a class="room" data-room="2" href="/dog-hotel"><span class="n">03</span><h3 class="display">Family Suite</h3><p><b class="rn">Alpha Suite</b> &middot; dogs from one family, or dogs who need more space</p><span class="pr">$160&ndash;$180<small>per night</small></span><span class="inl"><img src="/img/suite.webp" alt="Family suite" loading="lazy"></span></a>
 </div></section>
 <div class="rfloat" id="rfloat" aria-hidden="true"><img src="/img/lounge.webp" alt=""><img src="/img/pod.webp" alt=""><img src="/img/suite.webp" alt=""></div>
 
@@ -382,28 +382,28 @@ hotel = phero("Dog Hotel", "Dog Hotel &middot; Overnight stays in Auckland", '<s
   <div class="bg" data-par="10"><img src="/img/suite.webp" alt="A dog asleep at Woofland" loading="lazy"></div><div class="stars"></div>
   <div class="wrap c" data-in><div class="eyebrow" data-fade>What makes it different</div>
     <h2>While you sleep, someone sleeps <em>beside them.</em></h2>
-    <div class="cols"><p class="lead" data-fade data-d="1">Overnight, a team member stays and sleeps in the Pack Lounge, providing constant supervision, reassurance and a familiar human presence. Staff are present in the building at all times, day and night.</p><div class="time" data-fade data-d="2">No cages. No crates. No empty building.</div></div></div>
+    <div class="cols"><p class="lead" data-fade data-d="1">Overnight, a team member stays and sleeps in the home-like lounge, providing constant supervision, reassurance and a familiar human presence. Staff are present in the building at all times, day and night.</p><div class="time" data-fade data-d="2">No cages. No crates. No empty building.</div></div></div>
 </section>
 <section class="sec" id="rooms"><div class="wrap">
   <div class="svc-head"><div><div class="eyebrow">Stay your way</div><h2 class="display h2" style="margin-top:1rem">Three ways to <span class="it">stay.</span></h2></div><p>Different dogs rest differently. We match the room and routine to temperament, social comfort and wellbeing.</p></div>
-  <div class="room" data-room="0"><span class="n">01</span><h3 class="display">Pack Lounge<small>Relax. Socialise. Feel at home.</small></h3>
+  <div class="room" data-room="0"><span class="n">01</span><h3 class="display">Home-like Lounge <span class="prem">Premium</span><small>Pack Lounge &middot; a caregiver sleeps in the room</small></h3>
     <p>A shared, home-style space with couches and soft bedding for dogs who enjoy company. Overnight, a team member sleeps in the lounge with them.</p>
-    <span class="pr">$90<small>per night. $80 for regular daycare dogs.</small></span><span class="inl"><img src="/img/lounge.webp" alt="Pack Lounge" loading="lazy"></span></div>
-  <div class="room" data-room="1"><span class="n">02</span><h3 class="display">Paw Pod<small>Calm. Secure. Private.</small></h3>
+    <span class="pr">$90<small>per night. $80 for regular daycare dogs.</small></span><span class="inl"><img src="/img/lounge.webp" alt="Home-like lounge" loading="lazy"></span></div>
+  <div class="room" data-room="1"><span class="n">02</span><h3 class="display">Private Pod<small>Paw Pod &middot; for dogs who rest best alone, with someone checking on them through the night</small></h3>
     <p>A cosy private pod for dogs who rest best alone. Climate controlled with monitored airflow, comfortable bedding and gentle lighting.</p>
-    <span class="pr">$70<small>per night. $63 for regular daycare dogs.</small></span><span class="inl"><img src="/img/pod.webp" alt="Paw Pod" loading="lazy"></span></div>
-  <div class="room" data-room="2"><span class="n">03</span><h3 class="display">Alpha Suite<small>Spacious. Quiet. Comfortable.</small></h3>
+    <span class="pr">$70<small>per night. $63 for regular daycare dogs.</small></span><span class="inl"><img src="/img/pod.webp" alt="Private pod" loading="lazy"></span></div>
+  <div class="room" data-room="2"><span class="n">03</span><h3 class="display">Family Suite<small>Alpha Suite &middot; dogs from one family, or dogs who need more space</small></h3>
     <p>Our most spacious and private option, with natural daylight and room for dogs from the same family to stay together. Well suited to longer stays.</p>
-    <span class="pr">$180<small>per night. $160 for regular daycare dogs.</small></span><span class="inl"><img src="/img/suite.webp" alt="Alpha Suite" loading="lazy"></span></div>
+    <span class="pr">$180<small>per night. $160 for regular daycare dogs.</small></span><span class="inl"><img src="/img/suite.webp" alt="Family suite" loading="lazy"></span></div>
   <div class="note"><b>Regular daycare rate.</b> For dogs who have attended Woofland at least once every fortnight for a minimum of three consecutive months.</div>
   <div class="note"><b>Hotel transport.</b> Pick-up and drop-off across the North Shore, Dairy Flat, Riverhead, Kumeu, Coatesville, Hobsonville, Westgate, Massey, Ponsonby and Grey Lynn. One way $50, return $80. Silverdale, Auckland CBD or any surrounding suburb: contact us, we might be able to help.</div>
 </div></section>
 <div class="rfloat" id="rfloat" aria-hidden="true"><img src="/img/lounge.webp" alt=""><img src="/img/pod.webp" alt=""><img src="/img/suite.webp" alt=""></div>
-''' + faq([("x","Does someone really stay overnight?","Yes. In the Pack Lounge a caregiver stays and sleeps with the dogs, and staff are present in the building at all times."),
+''' + faq([("x","Does someone really stay overnight?","Yes. In the home-like lounge a caregiver stays and sleeps with the dogs, and staff are present in the building at all times."),
  ("x","What should I bring?","Their bed, food, favourite toy and any necessary medication, so they feel comfortable and at home."),
  ("x","Do new dogs need an assessment?","Yes. Every dog starts with a free trial and assessment before a stay is confirmed."),
  ("x","When can I drop off and pick up?","Hotel drop-offs and pick-ups are available by arrangement.")]) + cta("Planning a trip? <span class=\"it\">Start here.</span>", "Book a free trial and assessment, and we will help you choose the right room for your dog.")
-page("dog-hotel", "Dog Hotel & Boarding Auckland | Woofland", "A home-like dog hotel on Auckland's North Shore where a caregiver sleeps beside the dogs at night. Pack Lounge, Paw Pods and Alpha Suites.", hotel)
+page("dog-hotel", "Dog Hotel & Boarding Auckland | Woofland", "A home-like dog hotel on Auckland's North Shore where a caregiver sleeps beside the dogs at night. A home-like lounge, private pods and family suites.", hotel)
 
 # ---------------- FARM ----------------
 farm = phero("Farm Adventure", "An add-on to daycare", '<span class="ln"><span>A real farm.</span></span><span class="ln"><span>Not just <span class="it">a walk.</span></span></span>',
