@@ -135,7 +135,7 @@ if(hero&&loader){
 }else{runner&&runner.classList.add('show');$$('.phero').forEach(function(p){setTimeout(function(){p.classList.add('in')},60)})}
 
 /* runner */
-var rdog=$('#rdog'),rfill=$('#rfill'),rspr=$('#rspr'),rslp=$('#rslp'),rph=0,rfr=-1,poses={},pose='sit',flip=1,idleAt=performance.now(),lastY=window.scrollY||0,spd=0;
+var rdog=$('#rdog'),rfill=$('#rfill'),rspr=$('#rspr'),rslp=$('#rslp'),rph=0,rfr=-1,poses={},pose='sit',flip=1,idleAt=performance.now();
 if(rdog)$$('img',rdog).forEach(function(i){poses[i.dataset.p]=i});
 function setPose(p){if(p===pose||!poses[p])return;poses[pose].classList.remove('on');poses[p].classList.add('on');pose=p}
 
@@ -173,7 +173,7 @@ function frame(now){requestAnimationFrame(frame);
 
   var fdt=now-lastNow;lastNow=now;if(hero&&M.hero&&S.sy>=M.hero.t+M.hero.h)HP=-1;
   if(hero&&M.hero&&S.sy<M.hero.t+M.hero.h){
-    var hpT=clamp((S.sy-M.hero.t)/(M.hero.h-M.hero.s)),hp;if(fine||reduce||HP<0)HP=hpT;else{var dt=Math.max(0,Math.min(.05,fdt/1000)),cap=(HP<.46?.075:.3)*dt,d=hpT-HP;HP+=clamp(d,-cap,cap)}hp=HP;var P=seg(.46,.6,hp)+seg(.72,.86,hp),idx=P>=1?1:0,f=P-idx;if(P>=2){idx=1;f=1}
+    var hpT=clamp((S.sy-M.hero.t)/(M.hero.h-M.hero.s)),hp;if(reduce||HP<0)HP=hpT;else if(fine){var smoothDt=Math.max(.001,Math.min(.05,fdt/1000));HP=lerp(HP,hpT,1-Math.exp(-smoothDt*15));}else{var dt=Math.max(0,Math.min(.05,fdt/1000)),cap=(HP<.46?.075:.3)*dt,d=hpT-HP;HP+=clamp(d,-cap,cap)}hp=HP;var P=seg(.46,.6,hp)+seg(.72,.86,hp),idx=P>=1?1:0,f=P-idx;if(P>=2){idx=1;f=1}
     var si=P<.3?0:(P>.72&&P<1.3)?1:(P>1.72?2:-1);if(hp>.965)si=-1;setSlide(si);
     if(hill){var hk=clamp(P),he=hk*hk*(3-2*hk),hs=hstage.getBoundingClientRect(),sr=hsun.getBoundingClientRect(),cx=sr.left+sr.width/2-hs.left,cy=sr.top+sr.height/2-hs.top,
       mr=Math.sqrt(Math.pow(Math.max(cx,hs.width-cx),2)+Math.pow(Math.max(cy,hs.height-cy),2))+4;
@@ -186,7 +186,7 @@ function frame(now){requestAnimationFrame(frame);
           eX=.75+.15*dX,mX=dX<2.22?1.687+.15*dX:dX<=3.22?dX-.2:3.02+.15*(dX-3.22),tX=3.752+.15*dX,
           cam=dX+hstory._lead,camE=seg(.9,.99,st);cam=cam+(cX-cam)*camE*camE*(3-2*camE);
       var cyc=.56*Hh/Sp,gdt=Math.max(0,Math.min(.05,fdt/1000)),gdx=hst.pdX==null?0:Math.abs(dX-hst.pdX);hst.pdX=dX;
-      hst.wph=(hst.wph||0)+Math.min(gdx/cyc,gdt*1.7);hst.rph=(hst.rph||0)+Math.min(gdx/(cyc*1.5),gdt*2.3);hst.hph=(hst.hph||0)+Math.min(gdx/(cyc*1.6),gdt*1.1);
+      hst.wph=(hst.wph||0)+Math.min(gdx/cyc,gdt*2.7);hst.rph=(hst.rph||0)+Math.min(gdx/(cyc*1.5),gdt*3.0);hst.hph=(hst.hph||0)+Math.min(gdx/(cyc*1.6),gdt*1.7);
       var wf=(Math.floor(hst.wph*8)%8+8)%8,rnf=9+(Math.floor(hst.rph*6)%6+6)%6,fr,ps,
           sitf=function(a,b){var q=seg(a,b,st);return q<.3?22+Math.min(5,Math.floor(q/.3*6)):q<.72?27:28+Math.min(5,Math.floor((q-.72)/.28*6))};
       if(st<.087){ps='walk';fr=wf}else if(st<.141){ps='sniff';fr=16+Math.min(5,Math.floor(seg(.087,.141,st)*6))}else if(st<.32){ps='walk';fr=wf}
@@ -242,12 +242,29 @@ function frame(now){requestAnimationFrame(frame);
       if(pic)pic.style.transform='translate3d('+(rel*-5).toFixed(2)+'%,0,0) scale(1.12)';if(Math.abs(rel)<.25&&!pn._pk){pn._pk=1;var fl=pn.querySelector('.flip');if(fl)fl.classList.add('peek')}if(dg)dg.style.transform='translate3d('+(rel*(+dg.dataset.px)).toFixed(1)+'px,'+(Math.sin(t*1.4+q)*6).toFixed(1)+'px,0) rotate('+(rel*-10).toFixed(2)+'deg)'}
     if(rcnt)rcnt.textContent='0'+(act+1)}
   if(maniDog&&M.q){var md=clamp((S.sy+vh*.8-M.q.t)/(M.q.h+vh*.35));maniDog.style.transform='translate3d(0,'+((md-.5)*-60).toFixed(1)+'px,0) rotate('+((md-.5)*-6).toFixed(2)+'deg)'}
-  if(rdog){var dy=S.y-lastY;lastY=S.y;spd=lerp(spd,Math.abs(dy),.25);if(dy>.5)flip=-1;else if(dy<-.5)flip=1;
-    var pg=clamp(S.y/M.doc),nf,slp=false;rph+=Math.abs(dy);
-    if(spd>16){nf=9+Math.floor(rph/42)%6;idleAt=now}else if(spd>.6){nf=Math.floor(rph/16)%8;idleAt=now}else if(now-idleAt>6000){slp=true;nf=27}else if(now-idleAt>700)nf=27;else nf=24;
+  /* Tie the footer dog's footfalls to visible travel, not the page scroll delta.
+     This avoids cycling its legs while the dog barely advances on long pages. */
+  if(rdog){
+    var pg=clamp(S.y/M.doc),targetX=pg*Math.max(0,vw-84);
+    var runDt=Math.max(.001,Math.min(.05,(now-(rdog._last||now))/1000));rdog._last=now;
+    if(rdog._x==null)rdog._x=targetX;
+    var prevX=rdog._x;
+    rdog._x=reduce?targetX:lerp(prevX,targetX,1-Math.exp(-runDt*14));
+    var travelled=rdog._x-prevX,travelSpeed=Math.abs(travelled)/runDt;
+    var moving=travelSpeed>6,nf,slp=false;
+    if(moving){flip=travelled>0?-1:1;idleAt=now;rph+=Math.abs(travelled)}
+    if(reduce)nf=24;
+    else if(moving){
+      var running=travelSpeed>260;
+      nf=running?9+Math.floor(rph/13)%6:Math.floor(rph/8)%8;
+    }else if(now-idleAt>6000){slp=true;nf=27}
+    else if(now-idleAt>900)nf=27;
+    else nf=24;
     if(nf!==rfr){rfr=nf;rspr.style.backgroundPosition=((nf%8)/7*100).toFixed(2)+'% '+(Math.floor(nf/8)/4*100).toFixed(2)+'%'}
     if(slp!==rdog._s){rdog._s=slp;rspr.style.opacity=slp?0:1;rslp.style.opacity=slp?1:0}
-    rdog.style.transform='translate3d('+(pg*(vw-84)).toFixed(1)+'px,0,0) scaleX('+flip+')';rfill.style.transform='scaleX('+pg.toFixed(4)+')'}
+    rdog.style.transform='translate3d('+rdog._x.toFixed(1)+'px,0,0) scaleX('+flip+')';
+    rfill.style.transform='scaleX('+pg.toFixed(4)+')'
+  }
 }
 
 /* flip cards */
