@@ -173,13 +173,16 @@ function frame(now){requestAnimationFrame(frame);
 
   var fdt=now-lastNow;lastNow=now;if(hero&&M.hero&&S.sy>=M.hero.t+M.hero.h)HP=-1;
   if(hero&&M.hero&&S.sy<M.hero.t+M.hero.h){
-    var hpT=clamp((S.sy-M.hero.t)/(M.hero.h-M.hero.s)),hp;if(fine||reduce||HP<0)HP=hpT;else{var dt=Math.max(0,Math.min(.05,fdt/1000)),cap=(HP<.46?.075:.3)*dt,d=hpT-HP;HP+=clamp(d,-cap,cap)}hp=HP;var P=seg(.46,.6,hp)+seg(.72,.86,hp),idx=P>=1?1:0,f=P-idx;if(P>=2){idx=1;f=1}
+    var hpT=clamp((S.sy-M.hero.t)/(M.hero.h-M.hero.s)),hp;HP=hpT;hp=HP;var P=seg(.22,.48,hp)+seg(.55,.8,hp),idx=P>=1?1:0,f=P-idx;if(P>=2){idx=1;f=1}
     var si=P<.3?0:(P>.72&&P<1.3)?1:(P>1.72?2:-1);if(hp>.965)si=-1;setSlide(si);
     if(hill){var hk=clamp(P),he=hk*hk*(3-2*hk),hs=hstage.getBoundingClientRect(),sr=hsun.getBoundingClientRect(),cx=sr.left+sr.width/2-hs.left,cy=sr.top+sr.height/2-hs.top,
       mr=Math.sqrt(Math.pow(Math.max(cx,hs.width-cx),2)+Math.pow(Math.max(cy,hs.height-cy),2))+4;
       hill.style.setProperty('--hole',(he*mr).toFixed(1)+'px');hill.style.visibility=hk>=1?'hidden':'';hstory.style.visibility=hk>=1?'hidden':'';hstage.classList.toggle('onphoto',hk>.45);if(skipB)skipB.classList.toggle('gone',hp>.42);
       hstory.style.opacity=(1-seg(.15,.7,hk)).toFixed(3);
-      var st=seg(0,.44,hp),Sp=htrack._S||(htrack._S=parseFloat(getComputedStyle(htrack).getPropertyValue('--S'))*vw/100),Hh=hstory._H||(hstory._H=hstory.querySelector('.hp').getBoundingClientRect().height);
+      /* the story plays on its own (about 11 s); scrolling only ever moves it forward, never holds the visitor back */
+      var sdt=Math.max(0,Math.min(.05,fdt/1000));if(started&&ready)hst.auto=reduce?1:Math.min(1,(hst.auto||0)+sdt/11);
+      var stGoal=Math.max(hst.auto||0,seg(0,.2,hp));hst.st=reduce?stGoal:Math.min(stGoal,(hst.st||0)+Math.max(sdt/11,sdt*.45));
+      var st=hst.st,Sp=htrack._S||(htrack._S=parseFloat(getComputedStyle(htrack).getPropertyValue('--S'))*vw/100),Hh=hstory._H||(hstory._H=hstory.querySelector('.hp').getBoundingClientRect().height);
       if(!hst.E){hst.E=$('#hE');hst.M=$('#hM');hst.T=$('#hT');hst.C=$('#hC');hst.ball=$('#hball')}
       var kf=function(K,s){if(s<=K[0][0])return K[0][1];for(var i=0;i<K.length-1;i++){if(s<=K[i+1][0]){var u=(s-K[i][0])/(K[i+1][0]-K[i][0]);u=u*u*(3-2*u);return K[i][1]+(K[i+1][1]-K[i][1])*u}}return K[K.length-1][1]};
       var dX=kf([[0,0],[.087,.72],[.141,.72],[.322,2.22],[.383,2.22],[.503,3.22],[.564,3.22],[.671,4.12],[.765,5.32],[.866,6.12],[.946,6.5]],st),cX=6.5,
